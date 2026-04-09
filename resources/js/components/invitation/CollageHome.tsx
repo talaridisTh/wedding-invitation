@@ -15,7 +15,7 @@ interface BoxProps {
     lines?: string[];
     onClick?: () => void;
     rotation?: number;
-    imageRight?: boolean;
+    fullWidth?: boolean;
 }
 
 function Box({
@@ -25,7 +25,7 @@ function Box({
     lines,
     onClick,
     rotation = 0,
-    imageRight = false,
+    fullWidth = false,
 }: BoxProps) {
     const interactive = onClick !== undefined;
 
@@ -46,38 +46,67 @@ function Box({
             }
             data-collage-card
             style={{ transform: `rotate(${rotation}deg)` }}
-            className={`flex min-h-[150px] items-center gap-5 border border-wedding-red/35 bg-wedding-red/[0.04] px-5 py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] ${imageRight ? 'flex-row-reverse' : 'flex-row'} ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
+            className={`flex ${fullWidth ? 'min-h-[150px] flex-row items-center gap-5 px-6' : 'aspect-[3/4] flex-col items-stretch px-4'} border border-wedding-red/35 bg-wedding-red/[0.04] py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
         >
-            <div className="flex h-24 w-24 flex-shrink-0 items-center justify-center">
-                {icon}
-            </div>
-            <div className={`flex-1 ${imageRight ? 'text-right' : 'text-left'}`}>
-                <p className="text-[10px] font-normal tracking-[0.28em] uppercase opacity-80">
-                    {label}
-                </p>
-                {title && (
-                    <p className="mt-1.5 text-lg leading-tight font-medium italic">
-                        {title}
-                    </p>
-                )}
-                {lines && lines.length > 0 && (
-                    <div className="mt-1.5 space-y-0.5 text-xs font-light opacity-80">
-                        {lines.map((line) => (
-                            <p key={line}>{line}</p>
-                        ))}
+            {fullWidth ? (
+                <>
+                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center">
+                        {icon}
                     </div>
-                )}
-            </div>
+                    <div className="flex-1 text-left">
+                        <p className="text-[9px] font-normal tracking-[0.25em] uppercase opacity-80">
+                            {label}
+                        </p>
+                        {title && (
+                            <p className="mt-1 text-base leading-tight font-medium italic">
+                                {title}
+                            </p>
+                        )}
+                        {lines && lines.length > 0 && (
+                            <div className="mt-1 space-y-0.5 text-xs font-light opacity-80">
+                                {lines.map((line) => (
+                                    <p key={line}>{line}</p>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <p className="text-center text-[9px] font-normal tracking-[0.25em] uppercase opacity-80">
+                        {label}
+                    </p>
+                    {title && (
+                        <p className="mt-2 text-center text-[15px] leading-tight font-medium italic">
+                            {title}
+                        </p>
+                    )}
+
+                    <div className="flex min-h-0 flex-1 items-center justify-center py-2">
+                        <div className="flex h-16 w-16 items-center justify-center">
+                            {icon}
+                        </div>
+                    </div>
+
+                    {lines && lines.length > 0 && (
+                        <div className="space-y-0.5 text-center text-[11px] font-light opacity-80">
+                            {lines.map((line) => (
+                                <p key={line}>{line}</p>
+                            ))}
+                        </div>
+                    )}
+                </>
+            )}
         </div>
     );
 }
 
 interface IconImageProps {
     src: string;
-    alt: string;
+    alt?: string;
 }
 
-function IconImage({ src, alt }: IconImageProps) {
+function IconImage({ src, alt = '' }: IconImageProps) {
     return (
         <img
             src={src}
@@ -105,9 +134,9 @@ function IconSvg({ children }: { children: ReactNode }) {
     );
 }
 
-const RingsIcon = <IconImage src="/images/wedding/icons/rings.png" alt="" />;
-const DiningIcon = <IconImage src="/images/wedding/icons/dining.png" alt="" />;
-const ChampagneIcon = <IconImage src="/images/wedding/icons/champagne.png" alt="" />;
+const RingsIcon = <IconImage src="/images/wedding/icons/rings.png" />;
+const DiningIcon = <IconImage src="/images/wedding/icons/dining.png" />;
+const ChampagneIcon = <IconImage src="/images/wedding/icons/champagne.png" />;
 
 const QuestionIcon = (
     <IconSvg>
@@ -116,6 +145,29 @@ const QuestionIcon = (
         <circle cx="16" cy="23" r="0.5" fill="currentColor" />
     </IconSvg>
 );
+
+interface ImageCardProps {
+    src: string;
+    alt?: string;
+    rotation?: number;
+}
+
+function ImageCard({ src, alt = '', rotation = 0 }: ImageCardProps) {
+    return (
+        <div
+            data-collage-card
+            style={{ transform: `rotate(${rotation}deg)` }}
+            className="flex aspect-[3/4] items-center justify-center border border-wedding-red/35 bg-wedding-red/[0.04] p-4 shadow-[0_1px_2px_rgba(136,8,8,0.05)]"
+        >
+            <img
+                src={src}
+                alt={alt}
+                draggable={false}
+                className="h-full w-full object-contain"
+            />
+        </div>
+    );
+}
 
 export default function CollageHome({
     bride,
@@ -150,43 +202,62 @@ export default function CollageHome({
                     data-collage-card
                 />
 
-                <div className="flex flex-col gap-5">
+                <div className="grid grid-cols-2 gap-4">
+                    {/* Row 1 — box + placeholder image */}
                     <Box
                         icon={RingsIcon}
                         label="Save the Date"
                         title={dateDisplay}
                         lines={[`Ώρα ${ceremonyTime}`]}
-                        rotation={-0.8}
+                        rotation={-0.9}
+                    />
+                    <ImageCard
+                        src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                        alt="Wedding rings"
+                        rotation={0.7}
                     />
 
+                    {/* Row 2 — placeholder image + box */}
+                    <ImageCard
+                        src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"
+                        alt="Wedding aisle"
+                        rotation={-0.5}
+                    />
                     <Box
                         icon={ChampagneIcon}
                         label="Πρόγραμμα"
                         title="Λεπτομέρειες της ημέρας"
                         lines={['Δείτε το χρονοδιάγραμμα']}
-                        rotation={0.6}
-                        imageRight
+                        rotation={0.8}
                         onClick={() => onNavigate('timeline')}
                     />
 
+                    {/* Row 3 — box + placeholder image */}
                     <Box
                         icon={DiningIcon}
                         label="RSVP"
                         title="Επιβεβαίωση παρουσίας"
                         lines={['Θα παρευρεθώ']}
-                        rotation={-0.6}
+                        rotation={-0.7}
                         onClick={() => onNavigate('rsvp')}
                     />
-
-                    <Box
-                        icon={QuestionIcon}
-                        label="FAQ"
-                        title="Συχνές ερωτήσεις"
-                        lines={['Δείτε τις συχνές ερωτήσεις']}
-                        rotation={0.5}
-                        imageRight
-                        onClick={() => onNavigate('faq')}
+                    <ImageCard
+                        src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80"
+                        alt="Bridal flowers"
+                        rotation={0.6}
                     />
+
+                    <div className="col-span-2">
+                        <Box
+                            icon={QuestionIcon}
+                            label="FAQ"
+                            title="Συχνές ερωτήσεις"
+                            lines={['Δείτε τις συχνές ερωτήσεις']}
+                            rotation={-0.4}
+                            fullWidth
+                            onClick={() => onNavigate('faq')}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
