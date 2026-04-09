@@ -23,9 +23,19 @@ interface BoxProps {
     title: string;
     lines?: string[];
     onClick?: () => void;
+    rotation?: number;
+    fullWidth?: boolean;
 }
 
-function Box({ icon, label, title, lines, onClick }: BoxProps) {
+function Box({
+    icon,
+    label,
+    title,
+    lines,
+    onClick,
+    rotation = 0,
+    fullWidth = false,
+}: BoxProps) {
     const interactive = onClick !== undefined;
 
     return (
@@ -44,23 +54,53 @@ function Box({ icon, label, title, lines, onClick }: BoxProps) {
                     : undefined
             }
             data-collage-card
-            className={`flex flex-col items-center border-2 border-wedding-red bg-transparent px-4 py-6 text-center text-wedding-red ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
+            style={{ transform: `rotate(${rotation}deg)` }}
+            className={`flex ${fullWidth ? 'min-h-[170px] flex-row items-center gap-5 px-6' : 'aspect-[3/4] flex-col items-stretch px-4'} border border-wedding-red/35 bg-wedding-red/[0.04] py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
         >
-            <p className="text-[10px] font-normal tracking-[0.3em] uppercase">
-                {label}
-            </p>
-            <div className="mt-3 flex h-24 w-24 items-center justify-center">
-                {icon}
-            </div>
-            <p className="mt-3 text-base leading-snug font-medium italic">
-                {title}
-            </p>
-            {lines && lines.length > 0 && (
-                <div className="mt-2 space-y-0.5 text-xs font-light">
-                    {lines.map((line) => (
-                        <p key={line}>{line}</p>
-                    ))}
-                </div>
+            {fullWidth ? (
+                <>
+                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center">
+                        {icon}
+                    </div>
+                    <div className="flex-1 text-left">
+                        <p className="text-[9px] font-normal tracking-[0.25em] uppercase opacity-80">
+                            {label}
+                        </p>
+                        <p className="mt-1 text-base leading-tight font-medium italic">
+                            {title}
+                        </p>
+                        {lines && lines.length > 0 && (
+                            <div className="mt-1 space-y-0.5 text-xs font-light opacity-80">
+                                {lines.map((line) => (
+                                    <p key={line}>{line}</p>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <p className="text-center text-[9px] font-normal tracking-[0.25em] uppercase opacity-80">
+                        {label}
+                    </p>
+                    <p className="mt-2 text-center text-[15px] leading-tight font-medium italic">
+                        {title}
+                    </p>
+
+                    <div className="flex min-h-0 flex-1 items-center justify-center py-2">
+                        <div className="flex h-16 w-16 items-center justify-center">
+                            {icon}
+                        </div>
+                    </div>
+
+                    {lines && lines.length > 0 && (
+                        <div className="space-y-0.5 text-center text-[11px] font-light opacity-80">
+                            {lines.map((line) => (
+                                <p key={line}>{line}</p>
+                            ))}
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );
@@ -169,19 +209,21 @@ export default function CollageHome({
                     data-collage-card
                 />
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-4">
                     <Box
                         icon={RingsIcon}
                         label="Save the Date"
                         title={dateDisplay}
                         lines={[`Ώρα ${ceremonyTime}`]}
+                        rotation={-1.2}
                     />
 
                     <Box
                         icon={ChurchIcon}
                         label="Τελετή"
                         title={church.name}
-                        lines={[`Ώρα ${ceremonyTime}`, church.arrival_note]}
+                        lines={[`Ώρα ${ceremonyTime}`]}
+                        rotation={0.9}
                         onClick={() => onNavigate('venue')}
                     />
 
@@ -190,6 +232,7 @@ export default function CollageHome({
                         label="Δεξίωση"
                         title={reception.venue}
                         lines={[reception.full_address, `Ώρα ${reception.peak_time}`]}
+                        rotation={-0.6}
                         onClick={() => onNavigate('venue')}
                     />
 
@@ -198,6 +241,7 @@ export default function CollageHome({
                         label="Πρόγραμμα"
                         title="Λεπτομέρειες της ημέρας"
                         lines={['Δείτε το χρονοδιάγραμμα']}
+                        rotation={0.7}
                         onClick={() => onNavigate('timeline')}
                     />
 
@@ -205,6 +249,7 @@ export default function CollageHome({
                         icon={CameraIcon}
                         label="Φωτογραφίες"
                         title="Οι στιγμές μας"
+                        rotation={-0.8}
                         onClick={() => onNavigate('gallery')}
                     />
 
@@ -212,6 +257,7 @@ export default function CollageHome({
                         icon={HeartIcon}
                         label="RSVP"
                         title="Επιβεβαίωση παρουσίας"
+                        rotation={1.1}
                         onClick={() => onNavigate('rsvp')}
                     />
 
@@ -220,6 +266,9 @@ export default function CollageHome({
                             icon={QuestionIcon}
                             label="FAQ"
                             title="Συχνές ερωτήσεις"
+                            lines={['Δείτε τις συχνές ερωτήσεις']}
+                            rotation={-0.4}
+                            fullWidth
                             onClick={() => onNavigate('faq')}
                         />
                     </div>
