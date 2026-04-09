@@ -1,13 +1,14 @@
 interface BackLinkProps {
     onClick: () => void;
+    light?: boolean;
 }
 
-export default function BackLink({ onClick }: BackLinkProps) {
+export default function BackLink({ onClick, light = false }: BackLinkProps) {
     return (
         <button
             type="button"
             onClick={onClick}
-            className="inline-flex items-center gap-2 border-2 border-wedding-red px-5 py-2 text-xs font-light tracking-[0.2em] text-wedding-red uppercase transition-colors hover:bg-wedding-red/5"
+            className={`inv-back-link ${light ? 'inv-back-link-light' : ''}`}
         >
             <svg
                 width="14"

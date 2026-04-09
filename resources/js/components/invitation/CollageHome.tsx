@@ -1,229 +1,228 @@
-import type { ReactNode } from 'react';
+import { BranchTopLeft, BranchTopRight, LeafSprig, Flourish } from './Botanicals';
 
 interface CollageHomeProps {
     bride: string;
     groom: string;
     dateDisplay: string;
     ceremonyTime: string;
-    church: {
-        name: string;
-        arrival_note: string;
-    };
-    reception: {
-        venue: string;
-        full_address: string;
-        peak_time: string;
-    };
+    rsvpDeadline: string;
     onNavigate: (page: 'venue' | 'timeline' | 'faq' | 'rsvp' | 'gallery') => void;
 }
 
-interface BoxProps {
-    icon: ReactNode;
-    label: string;
-    title: string;
-    lines?: string[];
+function CardPortrait({
+    children,
+    footer,
+    onClick,
+    onKeyDown,
+    interactive = false,
+}: {
+    children: React.ReactNode;
+    footer?: React.ReactNode;
     onClick?: () => void;
-}
-
-function Box({ icon, label, title, lines, onClick }: BoxProps) {
-    const interactive = onClick !== undefined;
-
+    onKeyDown?: (event: React.KeyboardEvent) => void;
+    interactive?: boolean;
+}) {
     return (
         <div
+            className={`relative ${interactive ? 'inv-card-interactive' : ''}`}
             role={interactive ? 'button' : undefined}
             tabIndex={interactive ? 0 : undefined}
             onClick={onClick}
-            onKeyDown={
-                interactive
-                    ? (event) => {
-                          if (event.key === 'Enter' || event.key === ' ') {
-                              event.preventDefault();
-                              onClick();
-                          }
-                      }
-                    : undefined
-            }
-            data-collage-card
-            className={`flex flex-col items-center border-2 border-wedding-red bg-transparent px-4 py-6 text-center text-wedding-red ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
+            onKeyDown={onKeyDown}
         >
-            <p className="text-[10px] font-normal tracking-[0.3em] uppercase">
-                {label}
-            </p>
-            <div className="mt-3 flex h-24 w-24 items-center justify-center">
-                {icon}
-            </div>
-            <p className="mt-3 text-base leading-snug font-medium italic">
-                {title}
-            </p>
-            {lines && lines.length > 0 && (
-                <div className="mt-2 space-y-0.5 text-xs font-light">
-                    {lines.map((line) => (
-                        <p key={line}>{line}</p>
-                    ))}
+            <img
+                src="/images/wedding/card-portrait.png"
+                alt=""
+                className="block w-full"
+                draggable={false}
+            />
+            <div className="absolute inset-[8%] px-2 pt-2">{children}</div>
+            {footer && (
+                <div className="absolute inset-x-[8%] bottom-[8%] px-2 pb-2">
+                    {footer}
                 </div>
             )}
         </div>
     );
 }
 
-interface IconImageProps {
-    src: string;
-    alt: string;
-}
-
-function IconImage({ src, alt }: IconImageProps) {
-    return (
-        <img
-            src={src}
-            alt={alt}
-            draggable={false}
-            className="h-full w-full object-contain"
-        />
-    );
-}
-
-function IconSvg({ children }: { children: ReactNode }) {
-    return (
-        <svg
-            viewBox="0 0 32 32"
-            width="64"
-            height="64"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={1.4}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            {children}
-        </svg>
-    );
-}
-
-const RingsIcon = <IconImage src="/images/wedding/icons/rings.png" alt="" />;
-const DiningIcon = <IconImage src="/images/wedding/icons/dining.png" alt="" />;
-const ChampagneIcon = <IconImage src="/images/wedding/icons/champagne.png" alt="" />;
-
-const ChurchIcon = (
-    <IconSvg>
-        <path d="M16 3v6" />
-        <path d="M13 6h6" />
-        <path d="M16 9L6 15v13h20V15L16 9z" />
-        <path d="M13 28v-6a3 3 0 0 1 6 0v6" />
-        <path d="M10 18h2M20 18h2" />
-    </IconSvg>
-);
-
-const CameraIcon = (
-    <IconSvg>
-        <path d="M5 9h4l2-3h10l2 3h4a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2z" />
-        <circle cx="16" cy="17" r="5" />
-    </IconSvg>
-);
-
-const QuestionIcon = (
-    <IconSvg>
-        <circle cx="16" cy="16" r="12" />
-        <path d="M12 12a4 4 0 0 1 8 0c0 3-4 3-4 6" />
-        <circle cx="16" cy="23" r="0.5" fill="currentColor" />
-    </IconSvg>
-);
-
-const HeartIcon = (
-    <IconSvg>
-        <path d="M16 28s-11-7-11-15a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 15-11 15z" />
-    </IconSvg>
-);
-
 export default function CollageHome({
     bride,
     groom,
     dateDisplay,
     ceremonyTime,
-    church,
-    reception,
+    rsvpDeadline,
     onNavigate,
 }: CollageHomeProps) {
+    function handleKey(page: 'venue' | 'timeline' | 'faq' | 'rsvp' | 'gallery') {
+        return (event: React.KeyboardEvent) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onNavigate(page);
+            }
+        };
+    }
+
     return (
-        <div className="inv-screen relative overflow-y-auto bg-wedding-cream-light px-4 py-8">
-            <div className="mx-auto max-w-md">
-                <div className="mb-6 flex justify-center" data-collage-card>
+        <div className="inv-screen inv-bg relative overflow-y-auto px-3 py-6">
+            <BranchTopLeft className="absolute top-4 left-2 opacity-60" />
+            <BranchTopRight className="absolute top-[320px] right-1 opacity-50" />
+            <LeafSprig className="absolute bottom-[180px] left-3 opacity-40" />
+
+            <div className="mb-3 flex justify-center" data-collage-card>
+                <div className="relative w-[200px]">
                     <img
                         src="/images/wedding/envelope-open-v2.png"
                         alt=""
-                        className="block w-[180px]"
+                        className="block w-full"
                         draggable={false}
                     />
-                </div>
-
-                <h1
-                    className="mb-2 text-center text-3xl font-medium text-wedding-red italic"
-                    data-collage-card
-                >
-                    {bride}
-                    <span className="mx-2 text-2xl not-italic">&amp;</span>
-                    {groom}
-                </h1>
-
-                <div
-                    className="mx-auto mb-6 h-px w-24 bg-wedding-red"
-                    data-collage-card
-                />
-
-                <div className="grid grid-cols-2 gap-3">
-                    <Box
-                        icon={RingsIcon}
-                        label="Save the Date"
-                        title={dateDisplay}
-                        lines={[`Ώρα ${ceremonyTime}`]}
-                    />
-
-                    <Box
-                        icon={ChurchIcon}
-                        label="Τελετή"
-                        title={church.name}
-                        lines={[`Ώρα ${ceremonyTime}`, church.arrival_note]}
-                        onClick={() => onNavigate('venue')}
-                    />
-
-                    <Box
-                        icon={DiningIcon}
-                        label="Δεξίωση"
-                        title={reception.venue}
-                        lines={[reception.full_address, `Ώρα ${reception.peak_time}`]}
-                        onClick={() => onNavigate('venue')}
-                    />
-
-                    <Box
-                        icon={ChampagneIcon}
-                        label="Πρόγραμμα"
-                        title="Λεπτομέρειες της ημέρας"
-                        lines={['Δείτε το χρονοδιάγραμμα']}
-                        onClick={() => onNavigate('timeline')}
-                    />
-
-                    <Box
-                        icon={CameraIcon}
-                        label="Φωτογραφίες"
-                        title="Οι στιγμές μας"
-                        onClick={() => onNavigate('gallery')}
-                    />
-
-                    <Box
-                        icon={HeartIcon}
-                        label="RSVP"
-                        title="Επιβεβαίωση παρουσίας"
-                        onClick={() => onNavigate('rsvp')}
-                    />
-
-                    <div className="col-span-2">
-                        <Box
-                            icon={QuestionIcon}
-                            label="FAQ"
-                            title="Συχνές ερωτήσεις"
-                            onClick={() => onNavigate('faq')}
-                        />
+                    <div className="absolute top-[36%] right-[8%] left-[8%] flex flex-col items-center text-center">
+                        <p
+                            className="font-body text-[5.5px] font-bold tracking-[0.1em] uppercase"
+                            style={{ color: '#e8961e' }}
+                        >
+                            Με χαρά σας προσκαλούμε
+                        </p>
+                        <p
+                            className="font-body text-[5.5px] font-bold tracking-[0.1em] uppercase"
+                            style={{ color: '#e8961e' }}
+                        >
+                            στον γάμο μας
+                        </p>
                     </div>
                 </div>
+            </div>
+
+            <div className="collage-container">
+                <div className="collage-card-save" data-collage-card>
+                    <CardPortrait
+                        interactive
+                        onClick={() => onNavigate('gallery')}
+                        onKeyDown={handleKey('gallery')}
+                        footer={
+                            <p className="font-display text-sm font-semibold text-wedding-brown">
+                                Ώρα: {ceremonyTime}
+                            </p>
+                        }
+                    >
+                        <p className="font-body text-[8px] font-light tracking-[0.25em] text-wedding-gold uppercase">
+                            Save the Date
+                        </p>
+                        <div className="gold-line-left mt-1.5 w-8" />
+                        <p className="mt-2 font-display text-lg leading-tight font-semibold text-wedding-brown">
+                            {dateDisplay}
+                        </p>
+                    </CardPortrait>
+                </div>
+
+                <div className="collage-card-rsvp" data-collage-card>
+                    <CardPortrait
+                        interactive
+                        onClick={() => onNavigate('rsvp')}
+                        onKeyDown={handleKey('rsvp')}
+                        footer={
+                            <p className="font-body text-[9px] font-light text-wedding-brown-light">
+                                {rsvpDeadline}
+                            </p>
+                        }
+                    >
+                        <p className="font-body text-[8px] font-light tracking-[0.25em] text-wedding-gold uppercase">
+                            RSVP
+                        </p>
+                        <div className="gold-line-left mt-1.5 w-8" />
+                        <p className="mt-2 font-display text-base leading-snug font-semibold text-wedding-brown">
+                            Επιβεβαίωση παρουσίας
+                        </p>
+                    </CardPortrait>
+                </div>
+
+                <div className="collage-card-details" data-collage-card>
+                    <CardPortrait
+                        interactive
+                        onClick={() => onNavigate('venue')}
+                        onKeyDown={handleKey('venue')}
+                        footer={
+                            <p className="font-body text-[10px] font-light text-wedding-brown-light">
+                                Τοποθεσίες, ώρες & πληροφορίες →
+                            </p>
+                        }
+                    >
+                        <p className="font-body text-[8px] font-light tracking-[0.25em] text-wedding-gold uppercase">
+                            Τελετή & Δεξίωση
+                        </p>
+                        <div className="gold-line-left mt-1.5 w-8" />
+                        <p className="mt-2 font-display text-base leading-snug font-semibold text-wedding-brown">
+                            Λεπτομέρειες της ημέρας
+                        </p>
+                    </CardPortrait>
+                </div>
+
+                <div className="collage-card-timeline" data-collage-card>
+                    <CardPortrait
+                        interactive
+                        onClick={() => onNavigate('timeline')}
+                        onKeyDown={handleKey('timeline')}
+                        footer={
+                            <p className="font-body text-[10px] font-light text-wedding-brown-light">
+                                Δείτε το πρόγραμμα →
+                            </p>
+                        }
+                    >
+                        <p className="font-body text-[8px] font-light tracking-[0.25em] text-wedding-gold uppercase">
+                            Πρόγραμμα
+                        </p>
+                        <div className="gold-line-left mt-1.5 w-8" />
+                        <p className="mt-2 font-display text-[15px] font-semibold text-wedding-brown">
+                            Χρονοδιάγραμμα της ημέρας
+                        </p>
+                    </CardPortrait>
+                </div>
+            </div>
+
+            <div className="mt-2 flex justify-center">
+                <Flourish />
+            </div>
+
+            <div className="mt-2" data-collage-card>
+                <div className="relative">
+                    <img
+                        src="/images/wedding/card-landscape.png"
+                        alt=""
+                        className="block w-full"
+                        draggable={false}
+                    />
+                    <div className="absolute inset-[8%] flex flex-col items-center justify-center gap-0">
+                        <span className="font-script text-2xl text-wedding-gold">
+                            {bride}
+                        </span>
+                        <span className="font-display text-base font-light text-wedding-gold italic">
+                            &amp;
+                        </span>
+                        <span className="font-script text-2xl text-wedding-gold">
+                            {groom}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-3 flex justify-center" data-collage-card>
+                <button
+                    type="button"
+                    className="inv-card-interactive relative"
+                    onClick={() => onNavigate('faq')}
+                    onKeyDown={handleKey('faq')}
+                >
+                    <img
+                        src="/images/wedding/faq-circle.png"
+                        alt="FAQ"
+                        className="h-16 w-16"
+                        draggable={false}
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center font-display text-[10px] font-semibold tracking-widest text-wedding-brown uppercase">
+                        FAQ
+                    </span>
+                </button>
             </div>
         </div>
     );

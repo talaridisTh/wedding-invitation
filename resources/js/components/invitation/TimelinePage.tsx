@@ -1,5 +1,6 @@
 import type { WeddingTimelineItem } from '@/types';
 import BackLink from './BackLink';
+import { BranchTopLeft, LeafSprig } from './Botanicals';
 
 interface TimelinePageProps {
     dateDisplay: string;
@@ -13,35 +14,64 @@ export default function TimelinePage({
     onBack,
 }: TimelinePageProps) {
     return (
-        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red">
+        <div
+            className="inv-screen relative px-6 pt-0 pb-12"
+            style={{
+                backgroundImage: 'url(/images/wedding/page-background.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: 'var(--inv-bg)',
+            }}
+        >
+            <div className="page-accent-bar" />
+
+            <BranchTopLeft className="absolute top-8 left-4 opacity-50" />
+            <LeafSprig className="absolute bottom-24 right-5 -rotate-12 opacity-40" />
+
             <div className="mx-auto max-w-md pt-10">
-                <h2 className="text-3xl font-medium italic" data-page-item>
+                <h2
+                    className="font-display text-3xl font-semibold text-wedding-brown"
+                    data-page-item
+                >
                     Πρόγραμμα
                 </h2>
                 <p
-                    className="mt-2 text-sm font-light tracking-[0.2em] uppercase"
+                    className="mt-2 font-body text-sm font-light tracking-[0.2em] text-wedding-brown-light uppercase"
                     data-page-item
                 >
                     {dateDisplay}
                 </p>
-                <div className="mt-3 h-px w-16 bg-wedding-red" data-page-item />
+                <div className="gold-line-left mt-3 w-16" data-page-item />
 
-                <div className="mt-10 space-y-4">
-                    {items.map((item) => (
-                        <div
-                            key={item.time}
-                            className="border-2 border-wedding-red p-5"
-                            data-page-item
-                        >
-                            <div className="flex items-baseline gap-4">
-                                <p className="text-lg font-medium">{item.time}</p>
-                                <p className="text-lg font-medium italic">
-                                    {item.title}
-                                </p>
+                <div className="mt-10 space-y-0">
+                    {items.map((item, index) => (
+                        <div key={item.time}>
+                            <div className="flex gap-6 py-6" data-page-item>
+                                <div className="w-16 flex-shrink-0">
+                                    <p className="font-display text-lg font-semibold text-wedding-gold">
+                                        {item.time}
+                                    </p>
+                                </div>
+                                <div className="flex-1">
+                                    <p className="font-display text-lg font-semibold text-wedding-brown">
+                                        {item.title}
+                                    </p>
+                                    <p className="mt-1 font-body text-sm leading-relaxed font-light text-wedding-brown-medium">
+                                        {item.description}
+                                    </p>
+                                </div>
                             </div>
-                            <p className="mt-2 text-sm leading-relaxed font-light">
-                                {item.description}
-                            </p>
+                            {index < items.length - 1 && (
+                                <div data-page-item>
+                                    <img
+                                        src="/images/wedding/gold-divider.png"
+                                        alt=""
+                                        className="w-full"
+                                        draggable={false}
+                                    />
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

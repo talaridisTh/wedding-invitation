@@ -1,3 +1,5 @@
+import { LeafSprig } from './Botanicals';
+
 interface IntroScreenProps {
     bride: string;
     groom: string;
@@ -21,14 +23,23 @@ export default function IntroScreen({
     }
 
     return (
-        <div className="inv-screen relative flex flex-col items-center justify-center bg-wedding-cream-light px-6 text-wedding-red">
+        <div className="inv-screen inv-bg relative flex flex-col items-center justify-center px-6">
+            <LeafSprig className="absolute top-12 right-6 opacity-50" />
+            <LeafSprig className="absolute bottom-16 left-6 rotate-180 opacity-40" />
+
             <div className="text-center">
-                <p className="text-5xl font-medium italic sm:text-6xl">{bride}</p>
-                <p className="my-1 text-xl font-light sm:text-2xl">&amp;</p>
-                <p className="text-5xl font-medium italic sm:text-6xl">{groom}</p>
+                <p className="font-script text-5xl text-wedding-brown sm:text-6xl">
+                    {bride}
+                </p>
+                <p className="my-1 font-display text-xl font-light text-wedding-gold italic sm:text-2xl">
+                    &amp;
+                </p>
+                <p className="font-script text-5xl text-wedding-brown sm:text-6xl">
+                    {groom}
+                </p>
             </div>
 
-            <p className="mt-4 text-center text-xs font-light tracking-[0.2em] uppercase">
+            <p className="mt-4 text-center font-display text-xs font-light tracking-[0.2em] text-wedding-brown-medium uppercase">
                 {dateDisplay}
             </p>
 
@@ -37,7 +48,7 @@ export default function IntroScreen({
                 tabIndex={0}
                 onClick={onOpen}
                 onKeyDown={handleKeyDown}
-                className="mt-12 cursor-pointer transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-wedding-red"
+                className="inv-card-interactive mt-12"
                 aria-label={ctaText}
             >
                 <img
@@ -48,7 +59,9 @@ export default function IntroScreen({
                 />
             </div>
 
-            <p className="pulse-fade mt-8 text-base italic">{ctaText}</p>
+            <p className="pulse-fade mt-8 font-script text-base text-wedding-brown-light">
+                {ctaText}
+            </p>
         </div>
     );
 }
