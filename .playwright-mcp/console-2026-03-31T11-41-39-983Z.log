@@ -1,0 +1,5 @@
+[      48ms] [LOG] 🔍 Browser logger active (MCP server detected). Posting to: http://fwtini.test/_boost/browser-logs @ http://fwtini.test/:31
+[      59ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://fwtini.test/:90
+[   56143ms] [LOG] 🔍 Browser logger active (MCP server detected). Posting to: http://fwtini.test/_boost/browser-logs @ http://fwtini.test/:31
+[   56158ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://fwtini.test/:90
+[   56183ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://fwtini.test/favicon.ico:0

@@ -1,0 +1,25 @@
+- generic [ref=e11]:
+  - 'button "Save the Date Παρασκευή, 5 Ιουνίου 2026 Ώρα: 5:00 μ.μ." [ref=e15] [cursor=pointer]':
+    - generic [ref=e16]:
+      - paragraph [ref=e17]: Save the Date
+      - paragraph [ref=e19]: Παρασκευή, 5 Ιουνίου 2026
+      - paragraph [ref=e20]: "Ώρα: 5:00 μ.μ."
+  - button "Τελετή & Δεξίωση Λεπτομέρειες της ημέρας Τοποθεσίες, ώρες & πληροφορίες →" [ref=e22] [cursor=pointer]:
+    - generic [ref=e23]:
+      - paragraph [ref=e24]: Τελετή & Δεξίωση
+      - paragraph [ref=e26]: Λεπτομέρειες της ημέρας
+      - paragraph [ref=e27]: Τοποθεσίες, ώρες & πληροφορίες →
+  - generic [ref=e30]:
+    - paragraph [ref=e31]: RSVP
+    - paragraph [ref=e33]: Παρακαλούμε επιβεβαιώστε την παρουσία σας έως την 25 Μαΐου
+    - link "info@wedding.gr" [ref=e34] [cursor=pointer]:
+      - /url: mailto:info@wedding.gr
+  - button "Πρόγραμμα Χρονοδιάγραμμα Δείτε το πρόγραμμα →" [ref=e36] [cursor=pointer]:
+    - generic [ref=e37]:
+      - paragraph [ref=e38]: Πρόγραμμα
+      - paragraph [ref=e40]: Χρονοδιάγραμμα
+      - paragraph [ref=e41]: Δείτε το πρόγραμμα →
+  - generic [ref=e45]: Φωτεινή & Κωνσταντίνος-Ηλίας
+  - button "FAQ FAQ" [ref=e47] [cursor=pointer]:
+    - img "FAQ" [ref=e48]
+    - generic [ref=e49]: FAQ

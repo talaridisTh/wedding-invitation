@@ -1,0 +1,418 @@
+/* ==========================================================================
+   Wedding Invitation Microsite — Premium Editorial Styles
+   ========================================================================== */
+
+:root {
+    --inv-bg: #faf5ee;
+    --inv-primary: #6b5b4f;
+    --inv-primary-dark: #3a3028;
+    --inv-card: #fffbf7;
+    --inv-accent: #c9a962;
+    --inv-text: #6b5b4f;
+    --inv-text-soft: #9a8a7a;
+    --inv-line: #e8dccf;
+    --inv-gold: #c9a962;
+    --inv-envelope: #ecd9c6;
+    --inv-envelope-flap: #d9c4af;
+    --inv-envelope-fold: #e0cfbc;
+    --inv-paper: #fffbf7;
+}
+
+/* ---------- Lining numerals for display font ---------- */
+.font-display {
+    font-variant-numeric: lining-nums;
+}
+
+/* ---------- Base ---------- */
+.inv-screen {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.inv-bg {
+    background-color: var(--inv-bg);
+}
+
+.inv-bg-dark {
+    background-color: var(--inv-primary-dark);
+}
+
+/* ---------- Gold shimmer ---------- */
+.gold-shimmer {
+    background: linear-gradient(
+        90deg,
+        #b8942e 0%,
+        #f5e1a4 25%,
+        #c9a962 50%,
+        #f5e1a4 75%,
+        #b8942e 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* ---------- Wax seal ---------- */
+.wax-seal {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 35% 35%,
+        #e8c77b,
+        #c9a962 40%,
+        #a07c3a 80%,
+        #7a5c28 100%
+    );
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.25),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.wax-seal::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Gold line ---------- */
+.gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--inv-gold), transparent);
+}
+
+.gold-line-left {
+    height: 1px;
+    background: linear-gradient(90deg, var(--inv-gold), transparent);
+}
+
+/* ---------- Pulse fade CTA ---------- */
+@keyframes pulse-fade {
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+.pulse-fade {
+    animation: pulse-fade 2.8s ease-in-out infinite;
+}
+
+/* ---------- Card base ---------- */
+.inv-card {
+    background: var(--inv-card);
+    border: 1px solid var(--inv-line);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 20px 18px;
+}
+
+/* ---------- Collage container (masonry) ---------- */
+.collage-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    columns: 2;
+    column-gap: 6px;
+}
+
+.collage-container > * {
+    break-inside: avoid;
+    margin-bottom: 6px;
+}
+
+/* ---------- CSS Closed Envelope ---------- */
+.css-envelope-closed {
+    position: relative;
+    width: 240px;
+    height: 170px;
+}
+
+.css-envelope-closed .env-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 130px;
+    background: var(--inv-envelope);
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.css-envelope-closed .env-paper {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    top: 4px;
+    background: var(--inv-paper);
+    border-radius: 2px;
+    opacity: 0.5;
+}
+
+.css-envelope-closed .env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-top: 72px solid var(--inv-envelope-flap);
+    z-index: 2;
+}
+
+.css-envelope-closed .env-fold {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-bottom: 80px solid var(--inv-envelope-fold);
+}
+
+.css-envelope-closed .env-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+/* ---------- CSS Open Envelope ---------- */
+.css-envelope-open {
+    position: relative;
+    width: 220px;
+    height: 180px;
+}
+
+.css-envelope-open .env-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    background: var(--inv-envelope);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.css-envelope-open .env-flap-open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform-origin: top center;
+    transform: perspective(400px) rotateX(170deg);
+}
+
+.css-envelope-open .env-flap-open .flap-face {
+    width: 100%;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 68px solid var(--inv-envelope-flap);
+}
+
+.css-envelope-open .env-fold {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-bottom: 65px solid var(--inv-envelope-fold);
+}
+
+.css-envelope-open .env-inner {
+    position: absolute;
+    bottom: 15px;
+    left: 14px;
+    right: 14px;
+    top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 2;
+}
+
+/* ---------- FAQ dark theme ---------- */
+.faq-dark {
+    color: var(--inv-bg);
+}
+
+.faq-dark .faq-line {
+    background: rgba(250, 245, 238, 0.15);
+}
+
+/* ---------- Top accent bar ---------- */
+.page-accent-bar {
+    height: 3px;
+    background: var(--inv-accent);
+}
+
+.page-accent-bar-light {
+    height: 3px;
+    background: rgba(250, 245, 238, 0.3);
+}
+
+/* ---------- Collage card styles ---------- */
+.collage-envelope {
+    column-span: all;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.collage-card-save {
+    transform: rotate(-1deg);
+}
+
+.collage-card-details {
+    transform: rotate(0.8deg);
+}
+
+.collage-card-rsvp {
+    transform: rotate(-0.5deg);
+}
+
+.collage-card-timeline {
+    transform: rotate(0.5deg);
+}
+
+.collage-strip {
+    column-span: all;
+}
+
+.collage-faq-circle {
+    display: flex;
+    justify-content: center;
+}
+
+/* ---------- Interactive card hover ---------- */
+.inv-card-interactive {
+    cursor: pointer;
+    transition: box-shadow 0.25s ease;
+}
+
+/* Hover lift only on real pointer devices — on touch screens
+   the sticky :hover state caused flicker while scrolling. */
+@media (hover: hover) and (pointer: fine) {
+    .inv-card-interactive {
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .inv-card-interactive:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
+    }
+}
+
+.inv-card-interactive:focus-visible {
+    outline: 2px solid var(--inv-accent);
+    outline-offset: 2px;
+}
+
+/* Promote rotated collage cards to their own GPU layer. Prevents
+   repaint flicker on iOS Safari while scrolling the masonry grid. */
+.collage-card-save,
+.collage-card-details,
+.collage-card-rsvp,
+.collage-card-timeline {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* ---------- FAQ circle button ---------- */
+.faq-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid var(--inv-accent);
+    background: var(--inv-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.faq-circle:hover {
+    background: var(--inv-bg);
+    transform: scale(1.04);
+}
+
+.faq-circle:focus-visible {
+    outline: 2px solid var(--inv-accent);
+    outline-offset: 3px;
+}
+
+/* ---------- Back link ---------- */
+.inv-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--inv-text-soft);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px 0;
+}
+
+.inv-back-link:hover {
+    color: var(--inv-text);
+}
+
+.inv-back-link-light {
+    color: rgba(250, 245, 238, 0.5);
+}
+
+.inv-back-link-light:hover {
+    color: rgba(250, 245, 238, 0.8);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .gold-shimmer {
+        animation: none;
+    }
+
+    .pulse-fade {
+        animation: none;
+        opacity: 0.7;
+    }
+}

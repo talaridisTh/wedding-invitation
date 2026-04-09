@@ -1,0 +1,28 @@
+- generic [ref=e11]:
+  - generic [ref=e14]:
+    - text: Φ&Κ
+    - paragraph [ref=e15]: Με χαρά σας προσκαλούμε στον γάμο μας
+  - 'button "Save the Date Παρασκευή, 5 Ιουνίου 2026 Ώρα: 5:00 μ.μ." [ref=e17] [cursor=pointer]':
+    - generic [ref=e18]:
+      - paragraph [ref=e19]: Save the Date
+      - paragraph [ref=e21]: Παρασκευή, 5 Ιουνίου 2026
+      - paragraph [ref=e22]: "Ώρα: 5:00 μ.μ."
+  - button "Τελετή & Δεξίωση Λεπτομέρειες της ημέρας Τοποθεσίες, ώρες & πληροφορίες →" [ref=e24] [cursor=pointer]:
+    - generic [ref=e25]:
+      - paragraph [ref=e26]: Τελετή & Δεξίωση
+      - paragraph [ref=e28]: Λεπτομέρειες της ημέρας
+      - paragraph [ref=e29]: Τοποθεσίες, ώρες & πληροφορίες →
+  - generic [ref=e32]:
+    - paragraph [ref=e33]: RSVP
+    - paragraph [ref=e35]: Παρακαλούμε επιβεβαιώστε την παρουσία σας έως την 25 Μαΐου
+    - link "info@wedding.gr" [ref=e36] [cursor=pointer]:
+      - /url: mailto:info@wedding.gr
+  - button "Πρόγραμμα Χρονοδιάγραμμα Δείτε το πρόγραμμα →" [ref=e38] [cursor=pointer]:
+    - generic [ref=e39]:
+      - paragraph [ref=e40]: Πρόγραμμα
+      - paragraph [ref=e42]: Χρονοδιάγραμμα
+      - paragraph [ref=e43]: Δείτε το πρόγραμμα →
+  - generic [ref=e47]: Φωτεινή & Κωνσταντίνος-Ηλίας
+  - button "FAQ FAQ" [ref=e49] [cursor=pointer]:
+    - img "FAQ" [ref=e50]
+    - generic [ref=e51]: FAQ

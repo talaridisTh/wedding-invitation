@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@theme {
+    /* Fonts */
+    --font-sans:
+        'Noto Serif Display', ui-serif, Georgia, serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-display: 'Noto Serif Display', Georgia, serif;
+    --font-body: 'Noto Serif Display', Georgia, serif;
+    --font-script: 'Noto Serif Display', Georgia, serif;
+
+    /* Wedding palette */
+    --color-wedding-red: #880808;
+    --color-wedding-gold: #c9a962;
+    --color-wedding-gold-light: #d9a866;
+    --color-wedding-brown: #6b5b4f;
+    --color-wedding-brown-medium: #8b7355;
+    --color-wedding-brown-light: #9a8a7a;
+    --color-wedding-tan: #bda894;
+    --color-wedding-cream: #f5e6d3;
+    --color-wedding-cream-light: #faf5ee;
+    --color-wedding-cream-dark: #e8dccf;
+    --color-wedding-envelope: #ecd9c6;
+    --color-wedding-paper: #fffbf7;
+
+    /* Dress code greens */
+    --color-wedding-green-dark: #2d5016;
+    --color-wedding-green: #4a7c3d;
+    --color-wedding-green-light: #6ba45c;
+
+    /* Dress code pinks */
+    --color-wedding-pink-dark: #d4466f;
+    --color-wedding-pink: #e8779a;
+    --color-wedding-pink-light: #f0a7c0;
+}
