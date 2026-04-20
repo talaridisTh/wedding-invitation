@@ -93,8 +93,8 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
     const activePhoto = activeIndex === null ? null : photos[activeIndex];
 
     return (
-        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red">
-            <div className="mx-auto max-w-md pt-10">
+        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
+            <div className="mx-auto max-w-md pt-10 lg:max-w-5xl lg:pt-20">
                 <p
                     className="text-[10px] font-light tracking-[0.3em] uppercase"
                     data-page-item
@@ -103,12 +103,12 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                 </p>
 
                 <h2
-                    className="mt-2 text-3xl leading-tight font-medium italic"
+                    className="mt-2 text-3xl leading-tight font-medium italic lg:text-center lg:text-5xl"
                     data-page-item
                 >
                     {dateDisplay}
                 </h2>
-                <div className="mt-3 h-px w-16 bg-wedding-red" data-page-item />
+                <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
                 <p
                     className="mt-6 text-sm leading-relaxed font-light italic"
@@ -117,7 +117,7 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                     Μερικές στιγμές από το ταξίδι μας...
                 </p>
 
-                <div className="mt-10 grid grid-cols-2 gap-3">
+                <div className="mt-10 grid grid-cols-2 gap-3 lg:mt-16 lg:grid-cols-3 lg:gap-6">
                     {photos.map((photo, index) => (
                         <button
                             key={photo.src}

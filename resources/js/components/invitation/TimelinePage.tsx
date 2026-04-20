@@ -162,20 +162,20 @@ export default function TimelinePage({
     onBack,
 }: TimelinePageProps) {
     return (
-        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red">
-            <div className="mx-auto max-w-md pt-10">
-                <h2 className="text-3xl font-medium italic" data-page-item>
+        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
+            <div className="mx-auto max-w-md pt-10 lg:max-w-2xl lg:pt-20">
+                <h2 className="text-3xl font-medium italic lg:text-center lg:text-5xl" data-page-item>
                     Πρόγραμμα
                 </h2>
                 <p
-                    className="mt-2 text-sm font-light tracking-[0.2em] uppercase"
+                    className="mt-2 text-sm font-light tracking-[0.2em] uppercase lg:text-center lg:text-base lg:tracking-[0.3em]"
                     data-page-item
                 >
                     {dateDisplay}
                 </p>
-                <div className="mt-3 h-px w-16 bg-wedding-red" data-page-item />
+                <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
-                <ol className="relative mt-10">
+                <ol className="relative mt-10 lg:mt-16">
                     <div
                         aria-hidden="true"
                         className="pointer-events-none absolute top-8 bottom-8 left-1/2 w-px -translate-x-1/2 bg-wedding-red/25"
@@ -188,31 +188,31 @@ export default function TimelinePage({
                             <li
                                 key={item.time}
                                 data-page-item
-                                className="relative mb-8 grid grid-cols-[1fr_auto_1fr] items-center gap-3 last:mb-0"
+                                className="relative mb-8 grid grid-cols-[1fr_auto_1fr] items-center gap-3 last:mb-0 lg:mb-14 lg:gap-6"
                             >
                                 {contentOnRight ? (
                                     <div aria-hidden="true" />
                                 ) : (
-                                    <div className="pr-2 text-right">
-                                        <p className="text-2xl leading-none font-medium italic">
+                                    <div className="pr-2 text-right lg:pr-6">
+                                        <p className="text-2xl leading-none font-medium italic lg:text-4xl">
                                             {item.time}
                                         </p>
-                                        <p className="mt-1.5 text-[10px] leading-snug font-light tracking-[0.18em] uppercase">
+                                        <p className="mt-1.5 text-[10px] leading-snug font-light tracking-[0.18em] uppercase lg:mt-3 lg:text-xs lg:tracking-[0.25em]">
                                             {item.title}
                                         </p>
                                     </div>
                                 )}
 
-                                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)]">
+                                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:h-24 lg:w-24">
                                     <TimelineIcon name={item.icon} />
                                 </div>
 
                                 {contentOnRight ? (
-                                    <div className="pl-2 text-left">
-                                        <p className="text-2xl leading-none font-medium italic">
+                                    <div className="pl-2 text-left lg:pl-6">
+                                        <p className="text-2xl leading-none font-medium italic lg:text-4xl">
                                             {item.time}
                                         </p>
-                                        <p className="mt-1.5 text-[10px] leading-snug font-light tracking-[0.18em] uppercase">
+                                        <p className="mt-1.5 text-[10px] leading-snug font-light tracking-[0.18em] uppercase lg:mt-3 lg:text-xs lg:tracking-[0.25em]">
                                             {item.title}
                                         </p>
                                     </div>
@@ -224,7 +224,7 @@ export default function TimelinePage({
                     })}
                 </ol>
 
-                <div className="mt-12 flex justify-center" data-page-item>
+                <div className="mt-12 flex justify-center lg:mt-20" data-page-item>
                     <BackLink onClick={onBack} />
                 </div>
             </div>

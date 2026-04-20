@@ -46,24 +46,24 @@ function Box({
             }
             data-collage-card
             style={{ transform: `rotate(${rotation}deg)` }}
-            className={`relative flex ${fullWidth ? 'min-h-[150px] flex-row items-center gap-5 px-6' : 'aspect-[3/4] flex-col items-stretch px-4'} border border-wedding-red/35 bg-wedding-red/[0.04] py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
+            className={`relative flex ${fullWidth ? 'min-h-[150px] flex-row items-center gap-5 px-6 lg:min-h-[180px] lg:gap-8 lg:px-10' : 'aspect-[3/4] flex-col items-stretch px-4 lg:px-6'} border border-wedding-red/35 bg-wedding-red/[0.04] py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:py-8 ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
         >
             {fullWidth ? (
                 <>
-                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center">
+                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center lg:h-24 lg:w-24">
                         {icon}
                     </div>
                     <div className="flex-1 text-left">
-                        <p className="text-[9px] font-normal tracking-[0.25em] uppercase opacity-80">
+                        <p className="text-[9px] font-normal tracking-[0.25em] uppercase opacity-80 lg:text-xs">
                             {label}
                         </p>
                         {title && (
-                            <p className="mt-1 text-base leading-tight font-medium italic">
+                            <p className="mt-1 text-base leading-tight font-medium italic lg:mt-2 lg:text-2xl">
                                 {title}
                             </p>
                         )}
                         {lines && lines.length > 0 && (
-                            <div className="mt-1 space-y-0.5 text-xs font-light opacity-80">
+                            <div className="mt-1 space-y-0.5 text-xs font-light opacity-80 lg:mt-2 lg:text-sm">
                                 {lines.map((line) => (
                                     <p key={line}>{line}</p>
                                 ))}
@@ -73,23 +73,23 @@ function Box({
                 </>
             ) : (
                 <>
-                    <p className="text-center text-[9px] font-normal tracking-[0.25em] uppercase opacity-80">
+                    <p className="text-center text-[9px] font-normal tracking-[0.25em] uppercase opacity-80 lg:text-[11px]">
                         {label}
                     </p>
                     {title && (
-                        <p className="mt-2 text-center text-[15px] leading-tight font-medium italic">
+                        <p className="mt-2 text-center text-[15px] leading-tight font-medium italic lg:mt-3 lg:text-xl">
                             {title}
                         </p>
                     )}
 
-                    <div className="flex min-h-0 flex-1 items-center justify-center py-2">
-                        <div className="flex h-16 w-16 items-center justify-center">
+                    <div className="flex min-h-0 flex-1 items-center justify-center py-2 lg:py-4">
+                        <div className="flex h-16 w-16 items-center justify-center lg:h-24 lg:w-24">
                             {icon}
                         </div>
                     </div>
 
                     {lines && lines.length > 0 && (
-                        <div className="space-y-0.5 text-center text-[11px] font-light opacity-80">
+                        <div className="space-y-0.5 text-center text-[11px] font-light opacity-80 lg:text-sm">
                             {lines.map((line) => (
                                 <p key={line}>{line}</p>
                             ))}
@@ -197,32 +197,32 @@ export default function CollageHome({
     onNavigate,
 }: CollageHomeProps) {
     return (
-        <div className="inv-screen relative overflow-y-auto bg-wedding-cream-light px-4 py-8">
-            <div className="mx-auto max-w-md">
-                <div className="mb-6 flex justify-center" data-collage-card>
+        <div className="inv-screen relative overflow-y-auto bg-wedding-cream-light px-4 py-8 lg:px-12 lg:py-16">
+            <div className="mx-auto max-w-md lg:max-w-6xl">
+                <div className="mb-6 flex justify-center lg:mb-10" data-collage-card>
                     <img
                         src="/images/wedding/envelope-open-v2.png"
                         alt=""
-                        className="block w-[180px] [filter:hue-rotate(-12deg)_saturate(1.5)_brightness(0.96)_contrast(1.05)]"
+                        className="block w-[180px] lg:w-[280px] [filter:hue-rotate(-12deg)_saturate(1.5)_brightness(0.96)_contrast(1.05)]"
                         draggable={false}
                     />
                 </div>
 
                 <h1
-                    className="mb-2 text-center text-3xl font-medium text-wedding-red italic"
+                    className="mb-2 text-center text-3xl font-medium text-wedding-red italic lg:mb-3 lg:text-6xl"
                     data-collage-card
                 >
                     {bride}
-                    <span className="mx-2 text-2xl not-italic">&amp;</span>
+                    <span className="mx-2 text-2xl not-italic lg:mx-4 lg:text-5xl">&amp;</span>
                     {groom}
                 </h1>
 
                 <div
-                    className="mx-auto mb-6 h-px w-24 bg-wedding-red"
+                    className="mx-auto mb-6 h-px w-24 bg-wedding-red lg:mb-12 lg:w-40"
                     data-collage-card
                 />
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-8">
                     {/* Row 1 — box + placeholder image */}
                     <Box
                         icon={RingsIcon}
@@ -267,7 +267,7 @@ export default function CollageHome({
                         rotation={0.6}
                     />
 
-                    <div className="col-span-2">
+                    <div className="col-span-2 lg:col-span-3">
                         <Box
                             icon={QuestionIcon}
                             label="FAQ"
