@@ -1,6 +1,5 @@
 import type { WeddingChurch, WeddingReception } from '@/types';
 import BackLink from './BackLink';
-import { LocationItem } from './LocationCard';
 
 interface VenueDetailsPageProps {
     church: WeddingChurch;
@@ -9,12 +8,47 @@ interface VenueDetailsPageProps {
     onBack: () => void;
 }
 
+interface DirectionsLinkProps {
+    label: string;
+    href: string;
+}
+
+function DirectionsLink({ label, href }: DirectionsLinkProps) {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-baseline gap-3 border-b border-wedding-red/50 pb-1.5 text-base italic text-wedding-red transition-opacity hover:opacity-70 lg:text-xl"
+        >
+            {label}
+            <svg
+                viewBox="0 0 24 12"
+                width="22"
+                height="11"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
+            >
+                <path d="M1 6h21M17 1.5 22 6l-5 4.5" />
+            </svg>
+        </a>
+    );
+}
+
 export default function VenueDetailsPage({
     church,
     reception,
     ceremonyTime,
     onBack,
 }: VenueDetailsPageProps) {
+    // ceremonyTime is baked into the hero image; keep prop for future use
+    void ceremonyTime;
+
     return (
         <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
             <div className="mx-auto max-w-md pt-10 lg:max-w-3xl lg:pt-20">
@@ -30,30 +64,28 @@ export default function VenueDetailsPage({
                     data-page-item
                 />
 
-                <ol className="relative mt-10 lg:mt-16">
-                    <div className="mb-16 lg:mb-24">
-                        <LocationItem
-                            image="/images/wedding/venue-church-art.png"
-                            imageAlt="Εκκλησία"
-                            label="Τελετή Γάμου"
-                            title={church.name}
-                            time={ceremonyTime}
-                            address={church.arrival_note}
-                            href={church.maps_url}
-                        />
-                    </div>
+                <div className="mt-10 lg:mt-14" data-page-item>
+                    <img
+                        src="/images/wedding/venue-card-art.png"
+                        alt="Τελετή στο Παρεκκλήσι Αγίου Νεομάρτυρος Γεωργίου εκ Κρήνης και Δεξίωση στην Πίστα Καρτ Λαγκαδά Volan"
+                        draggable={false}
+                        className="mx-auto w-full max-w-md lg:max-w-2xl"
+                    />
+                </div>
 
-                    <LocationItem
-                        image="/images/wedding/venue-party-art.png"
-                        imageAlt="Γλέντι"
-                        label="Δεξίωση"
-                        title={reception.venue}
-                        time={reception.peak_time}
-                        address={reception.full_address}
-                        note={reception.note}
+                <div
+                    className="mt-12 flex flex-col items-center gap-6 lg:mt-16 lg:flex-row lg:justify-center lg:gap-16"
+                    data-page-item
+                >
+                    <DirectionsLink
+                        label="Οδηγίες Τελετής"
+                        href={church.maps_url}
+                    />
+                    <DirectionsLink
+                        label="Οδηγίες Δεξίωσης"
                         href={reception.maps_url}
                     />
-                </ol>
+                </div>
 
                 <div className="mt-12 flex justify-center lg:mt-20" data-page-item>
                     <BackLink onClick={onBack} />
