@@ -55,10 +55,19 @@ export interface WeddingTabs {
     info: string;
 }
 
+export type WeddingTimelineIcon =
+    | 'rings'
+    | 'cocktail'
+    | 'couple'
+    | 'cake'
+    | 'dance'
+    | 'party';
+
 export interface WeddingTimelineItem {
     time: string;
     title: string;
-    description: string;
+    description?: string;
+    icon?: WeddingTimelineIcon;
 }
 
 export interface WeddingFaqItem {

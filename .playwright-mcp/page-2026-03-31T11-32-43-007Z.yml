@@ -1,9 +1,0 @@
-- generic [ref=e1]:
-  - generic [ref=e2]:
-    - paragraph [ref=e3]: Φωτεινή
-    - paragraph [ref=e4]: "&"
-    - paragraph [ref=e5]: Κωνσταντίνος-Ηλίας
-  - paragraph [ref=e6]: Παρασκευή, 5 Ιουνίου 2026
-  - button "Κάντε κλικ για να ανοίξετε":
-    - img "Προσκλητήριο γάμου"
-  - paragraph [ref=e7]: Κάντε κλικ για να ανοίξετε

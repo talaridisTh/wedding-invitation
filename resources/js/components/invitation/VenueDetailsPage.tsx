@@ -16,44 +16,25 @@ export default function VenueDetailsPage({
     onBack,
 }: VenueDetailsPageProps) {
     return (
-        <div
-            className="inv-screen relative px-6 pt-0 pb-12"
-            style={{
-                backgroundImage: 'url(/images/wedding/page-background.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'top center',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: 'var(--inv-bg)',
-            }}
-        >
-            <div className="page-accent-bar" />
-
-            <BranchTopRight className="absolute top-8 right-4 opacity-50" />
-            <LeafSprig className="absolute bottom-20 left-4 rotate-12 opacity-40" />
-
-            <div className="mx-auto max-w-md pt-10">
+        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
+            <div className="mx-auto max-w-md pt-10 lg:max-w-4xl lg:pt-20">
                 <h2
-                    className="font-display text-3xl leading-tight font-semibold text-wedding-brown"
+                    className="text-3xl leading-tight font-medium italic lg:text-center lg:text-5xl"
                     data-page-item
                 >
                     Τελετή &<br />
                     Δεξίωση
                 </h2>
-                <div className="gold-line-left mt-3 w-16" data-page-item />
+                <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
-                <div className="mt-10" data-page-item>
-                    <p className="font-body text-[10px] font-light tracking-[0.3em] text-wedding-gold uppercase">
+                <div className="mt-10 lg:mt-16 lg:grid lg:grid-cols-2 lg:gap-6">
+                <div className="border border-wedding-red/35 bg-wedding-red/[0.04] p-5 shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:p-8" data-page-item>
+                    <p className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-xs">
                         Τελετή Γάμου
                     </p>
-                    <p className="mt-3 font-display text-xl font-semibold text-wedding-brown">
-                        {church.name}
-                    </p>
-                    <p className="mt-2 font-body text-sm font-light text-wedding-brown-medium">
-                        Ώρα: {ceremonyTime}
-                    </p>
-                    <p className="mt-1 font-body text-sm font-light text-wedding-brown-light">
-                        {church.arrival_note}
-                    </p>
+                    <p className="mt-3 text-xl font-medium italic lg:mt-4 lg:text-2xl">{church.name}</p>
+                    <p className="mt-2 text-sm font-light">Ώρα: {ceremonyTime}</p>
+                    <p className="mt-1 text-sm font-light">{church.arrival_note}</p>
                     <a
                         href={church.maps_url}
                         target="_blank"
@@ -64,26 +45,13 @@ export default function VenueDetailsPage({
                     </a>
                 </div>
 
-                <div className="my-8" data-page-item>
-                    <img
-                        src="/images/wedding/gold-divider.png"
-                        alt=""
-                        className="w-full"
-                        draggable={false}
-                    />
-                </div>
-
-                <div data-page-item>
-                    <p className="font-body text-[10px] font-light tracking-[0.3em] text-wedding-gold uppercase">
+                <div className="mt-6 border border-wedding-red/35 bg-wedding-red/[0.04] p-5 shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:mt-0 lg:p-8" data-page-item>
+                    <p className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-xs">
                         Δεξίωση
                     </p>
-                    <p className="mt-3 font-display text-xl font-semibold text-wedding-brown">
-                        {reception.venue}
-                    </p>
-                    <p className="mt-2 font-body text-sm font-light text-wedding-brown-medium">
-                        {reception.full_address}
-                    </p>
-                    <p className="mt-1 font-body text-sm font-light text-wedding-brown-medium">
+                    <p className="mt-3 text-xl font-medium italic lg:mt-4 lg:text-2xl">{reception.venue}</p>
+                    <p className="mt-2 text-sm font-light">{reception.full_address}</p>
+                    <p className="mt-1 text-sm font-light">
                         Ώρα: {reception.peak_time}
                     </p>
                     <a
@@ -98,17 +66,9 @@ export default function VenueDetailsPage({
                         {reception.note}
                     </p>
                 </div>
-
-                <div className="my-8" data-page-item>
-                    <img
-                        src="/images/wedding/gold-divider.png"
-                        alt=""
-                        className="w-full"
-                        draggable={false}
-                    />
                 </div>
 
-                <div className="mt-6 flex justify-center" data-page-item>
+                <div className="mt-10 flex justify-center lg:mt-20" data-page-item>
                     <BackLink onClick={onBack} />
                 </div>
             </div>

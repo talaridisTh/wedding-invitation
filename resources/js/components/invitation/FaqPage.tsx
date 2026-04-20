@@ -9,47 +9,43 @@ interface FaqPageProps {
 
 export default function FaqPage({ items, onBack }: FaqPageProps) {
     return (
-        <div className="inv-screen inv-bg-dark faq-dark relative px-6 pt-0 pb-12">
-            <div className="page-accent-bar-light" />
-
-            <BranchLight className="absolute top-8 right-4" />
-            <LeafSprigLight className="absolute bottom-20 left-4 rotate-12" />
-
-            <div className="mx-auto max-w-md pt-10">
-                <h2
-                    className="font-display text-3xl font-semibold"
-                    data-page-item
-                >
-                    FAQ
+        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
+            <div className="mx-auto max-w-md pt-10 lg:max-w-3xl lg:pt-20">
+                <h2 className="text-3xl font-medium italic lg:text-center lg:text-5xl" data-page-item>
+                    Συχνές ερωτήσεις
                 </h2>
-                <div
-                    className="mt-3 h-px w-16 bg-wedding-gold/40"
-                    data-page-item
-                />
+                <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
-                <div className="mt-10 space-y-0">
+                <ol className="relative mt-10 lg:mt-16">
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute top-6 bottom-6 left-6 w-px bg-wedding-red/25"
+                    />
+
                     {items.map((item, index) => (
-                        <div key={item.question}>
-                            <div className="py-6" data-page-item>
-                                <p className="font-display text-lg font-semibold">
-                                    {item.question}
-                                </p>
-                                <p className="mt-2 font-body text-sm leading-relaxed font-light opacity-70">
-                                    {item.answer}
-                                </p>
+                        <li
+                            key={item.question}
+                            data-page-item
+                            className="relative mb-10 pl-20 last:mb-0 lg:mb-14 lg:pl-28"
+                        >
+                            <div className="absolute top-0 left-0 flex h-12 w-12 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:h-16 lg:w-16">
+                                <span className="text-base font-medium italic lg:text-xl">
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
                             </div>
-                            {index < items.length - 1 && (
-                                <div
-                                    className="faq-line h-px w-full"
-                                    data-page-item
-                                />
-                            )}
-                        </div>
-                    ))}
-                </div>
 
-                <div className="mt-10 flex justify-center" data-page-item>
-                    <BackLink onClick={onBack} light />
+                            <p className="text-lg leading-snug font-medium italic lg:text-2xl">
+                                {item.question}
+                            </p>
+                            <p className="mt-3 text-sm leading-relaxed font-light opacity-80 lg:mt-4 lg:text-base">
+                                {item.answer}
+                            </p>
+                        </li>
+                    ))}
+                </ol>
+
+                <div className="mt-12 flex justify-center lg:mt-20" data-page-item>
+                    <BackLink onClick={onBack} />
                 </div>
             </div>
         </div>

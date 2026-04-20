@@ -9,6 +9,43 @@ interface RsvpPageProps {
     onBack: () => void;
 }
 
+function EnvelopeIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 48 48"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={className}
+            aria-hidden="true"
+        >
+            <rect x="7" y="13" width="34" height="22" rx="1" />
+            <path d="M7 15 l17 12 l17 -12" />
+            <path d="M20 24 q4 -4 8 0" />
+        </svg>
+    );
+}
+
+function CheckIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            viewBox="0 0 48 48"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.3}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={className}
+            aria-hidden="true"
+        >
+            <circle cx="24" cy="24" r="18" />
+            <path d="M15 24 l7 7 l13 -14" />
+        </svg>
+    );
+}
+
 export default function RsvpPage({ deadlineDisplay, onBack }: RsvpPageProps) {
     const [confirmedName, setConfirmedName] = useState<string | null>(null);
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -28,111 +65,127 @@ export default function RsvpPage({ deadlineDisplay, onBack }: RsvpPageProps) {
     };
 
     return (
-        <div
-            className="inv-screen relative px-6 pt-0 pb-12"
-            style={{
-                backgroundImage: 'url(/images/wedding/page-background.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'top center',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: 'var(--inv-bg)',
-            }}
-        >
-            <div className="page-accent-bar" />
-
-            <BranchTopRight className="absolute top-8 right-4 opacity-50" />
-            <LeafSprig className="absolute bottom-20 left-4 rotate-12 opacity-40" />
-
-            <div className="mx-auto max-w-md pt-10">
+        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
+            <div className="mx-auto max-w-md pt-10 lg:max-w-xl lg:pt-20">
                 <p
-                    className="font-body text-[10px] font-light tracking-[0.3em] text-wedding-gold uppercase"
+                    className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-center lg:text-xs"
                     data-page-item
                 >
                     RSVP
                 </p>
 
                 <h2
-                    className="mt-2 font-display text-3xl leading-tight font-semibold text-wedding-brown"
+                    className="mt-2 text-3xl leading-tight font-medium italic lg:text-center lg:text-5xl"
                     data-page-item
                 >
                     Επιβεβαίωση
                     <br />
                     Παρουσίας
                 </h2>
-                <div className="gold-line-left mt-3 w-16" data-page-item />
-
-                <p
-                    className="mt-6 font-body text-sm leading-relaxed font-light text-wedding-brown-light"
-                    data-page-item
-                >
-                    {deadlineDisplay}
-                </p>
+                <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
                 {confirmedName === null ? (
-                    <form
-                        onSubmit={(event) => {
-                            event.preventDefault();
-                            submitRsvp();
-                        }}
-                        className="mt-8"
-                        data-page-item
-                        noValidate
-                    >
-                        <label
-                            htmlFor="rsvp-name"
-                            className="block font-body text-xs font-light tracking-[0.2em] text-wedding-brown-medium uppercase"
+                    <>
+                        <div
+                            className="mt-10 flex justify-center"
+                            data-page-item
                         >
-                            Όνομα
-                        </label>
-                        <input
-                            id="rsvp-name"
-                            type="text"
-                            name="name"
-                            value={data.name}
-                            onChange={(event) => setData('name', event.target.value)}
-                            autoComplete="name"
-                            required
-                            minLength={2}
-                            maxLength={120}
-                            placeholder="π.χ. Γιώργος Παπαδόπουλος"
-                            className="mt-2 w-full border-0 border-b border-wedding-gold/40 bg-transparent px-1 py-2 font-display text-lg text-wedding-brown placeholder:text-wedding-brown-light/50 focus:border-wedding-gold focus:outline-none"
-                        />
-                        {errors.name && (
-                            <p className="mt-2 font-body text-xs text-red-700">
-                                {errors.name}
-                            </p>
-                        )}
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:h-28 lg:w-28">
+                                <EnvelopeIcon className="h-9 w-9 lg:h-12 lg:w-12" />
+                            </div>
+                        </div>
 
-                        <button
-                            type="submit"
-                            disabled={processing}
-                            className="mt-8 w-full rounded-sm border border-wedding-gold bg-wedding-gold/10 px-6 py-3 font-body text-xs tracking-[0.2em] text-wedding-brown uppercase transition-colors hover:bg-wedding-gold/20 disabled:cursor-not-allowed disabled:opacity-50"
+                        <p
+                            className="mt-6 text-center text-sm leading-relaxed font-light"
+                            data-page-item
                         >
-                            {processing ? 'Αποστολή...' : 'Θα παρευρεθώ'}
-                        </button>
-                    </form>
-                ) : (
-                    <div className="mt-10" data-page-item>
-                        <p className="font-display text-xl font-semibold text-wedding-brown">
-                            Ευχαριστούμε, {confirmedName}!
+                            {deadlineDisplay}
                         </p>
-                        <p className="mt-3 font-body text-sm leading-relaxed font-light text-wedding-brown-medium">
-                            Η επιβεβαίωσή σας καταχωρήθηκε. Ανυπομονούμε να σας
-                            δούμε στην ημέρα μας.
+
+                        <form
+                            onSubmit={(event) => {
+                                event.preventDefault();
+                                submitRsvp();
+                            }}
+                            className="mt-10"
+                            data-page-item
+                            noValidate
+                        >
+                            <label
+                                htmlFor="rsvp-name"
+                                className="block text-center text-[10px] font-light tracking-[0.3em] uppercase"
+                            >
+                                Όνομα
+                            </label>
+                            <input
+                                id="rsvp-name"
+                                type="text"
+                                name="name"
+                                value={data.name}
+                                onChange={(event) =>
+                                    setData('name', event.target.value)
+                                }
+                                autoComplete="name"
+                                required
+                                minLength={2}
+                                maxLength={120}
+                                placeholder="π.χ. Γιώργος Παπαδόπουλος"
+                                className="mt-3 w-full border-0 border-b border-wedding-red/50 bg-transparent px-1 py-2 text-center text-lg italic text-wedding-red placeholder:text-wedding-red/40 placeholder:not-italic focus:border-wedding-red focus:outline-none lg:mt-4 lg:py-3 lg:text-2xl"
+                            />
+                            {errors.name && (
+                                <p className="mt-2 text-center text-xs italic">
+                                    {errors.name}
+                                </p>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={processing}
+                                className="group mt-10 flex w-full items-center justify-center py-3 transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                <span className="inline-flex items-baseline gap-3 border-b border-wedding-red/60 pb-1.5 text-xl italic text-wedding-red lg:text-2xl">
+                                    {processing
+                                        ? 'Αποστολή...'
+                                        : 'Θα παρευρεθώ'}
+                                    {!processing && (
+                                        <svg
+                                            viewBox="0 0 24 12"
+                                            width="22"
+                                            height="11"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={1}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            aria-hidden="true"
+                                            className="transition-transform group-hover:translate-x-1"
+                                        >
+                                            <path d="M1 6h21M17 1.5 22 6l-5 4.5" />
+                                        </svg>
+                                    )}
+                                </span>
+                            </button>
+                        </form>
+                    </>
+                ) : (
+                    <div className="mt-12 flex flex-col items-center text-center" data-page-item>
+                        <div className="flex h-20 w-20 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)]">
+                            <CheckIcon className="h-10 w-10 lg:h-14 lg:w-14" />
+                        </div>
+                        <p className="mt-6 text-2xl leading-tight font-medium italic lg:mt-8 lg:text-4xl">
+                            Ευχαριστούμε,
+                            <br />
+                            {confirmedName}!
+                        </p>
+                        <p className="mt-4 text-sm leading-relaxed font-light opacity-80 lg:mt-6 lg:text-base">
+                            Η επιβεβαίωσή σας καταχωρήθηκε.
+                            <br />
+                            Ανυπομονούμε να σας δούμε στην ημέρα μας.
                         </p>
                     </div>
                 )}
 
-                <div className="my-10" data-page-item>
-                    <img
-                        src="/images/wedding/gold-divider.png"
-                        alt=""
-                        className="w-full"
-                        draggable={false}
-                    />
-                </div>
-
-                <div className="flex justify-center" data-page-item>
+                <div className="mt-12 flex justify-center lg:mt-20" data-page-item>
                     <BackLink onClick={onBack} />
                 </div>
             </div>

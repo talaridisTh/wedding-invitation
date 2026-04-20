@@ -226,7 +226,6 @@ export default function InvitationPage({ wedding }: { wedding: Wedding }) {
                         groom={wedding.groom}
                         dateDisplay={wedding.date_display}
                         ceremonyTime={wedding.ceremony_time_display}
-                        rsvpDeadline={wedding.rsvp.deadline_display}
                         onNavigate={navigateToPage}
                     />
                 </div>

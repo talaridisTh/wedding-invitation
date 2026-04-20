@@ -94,22 +94,8 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
     const activePhoto = activeIndex === null ? null : photos[activeIndex];
 
     return (
-        <div
-            className="inv-screen relative px-6 pt-0 pb-12"
-            style={{
-                backgroundImage: 'url(/images/wedding/page-background.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'top center',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: 'var(--inv-bg)',
-            }}
-        >
-            <div className="page-accent-bar" />
-
-            <BranchTopRight className="absolute top-8 right-4 opacity-50" />
-            <LeafSprig className="absolute bottom-20 left-4 rotate-12 opacity-40" />
-
-            <div className="mx-auto max-w-md pt-10">
+        <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
+            <div className="mx-auto max-w-md pt-10 lg:max-w-5xl lg:pt-20">
                 <p
                     className="font-body text-[10px] font-light tracking-[0.3em] text-wedding-gold uppercase"
                     data-page-item
@@ -118,12 +104,12 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                 </p>
 
                 <h2
-                    className="mt-2 font-display text-3xl leading-tight font-semibold text-wedding-brown"
+                    className="mt-2 text-3xl leading-tight font-medium italic lg:text-center lg:text-5xl"
                     data-page-item
                 >
                     {dateDisplay}
                 </h2>
-                <div className="gold-line-left mt-3 w-16" data-page-item />
+                <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
                 <p
                     className="mt-6 font-body text-sm leading-relaxed font-light text-wedding-brown-light italic"
@@ -132,17 +118,14 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                     Μερικές στιγμές από το ταξίδι μας...
                 </p>
 
-                <div className="mt-10 grid grid-cols-2 gap-4">
+                <div className="mt-10 grid grid-cols-2 gap-3 lg:mt-16 lg:grid-cols-3 lg:gap-6">
                     {photos.map((photo, index) => (
                         <button
                             key={photo.src}
                             type="button"
                             onClick={() => setActiveIndex(index)}
                             data-page-item
-                            className="group relative block overflow-hidden rounded-sm bg-white p-2 pb-6 shadow-[0_4px_14px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_8px_22px_rgba(0,0,0,0.18)]"
-                            style={{
-                                transform: `rotate(${photo.rotation}deg)`,
-                            }}
+                            className="block overflow-hidden shadow-[0_1px_3px_rgba(136,8,8,0.08)] transition-opacity hover:opacity-90"
                         >
                             <img
                                 src={photo.src}
