@@ -207,7 +207,7 @@ export default function CollageHome({
             <div className="mx-auto max-w-md lg:max-w-3xl">
                 <div className="mb-6 flex justify-center lg:mb-10" data-collage-card>
                     <img
-                        src="/images/wedding/envelope-open-v2.png"
+                        src="/images/wedding/envelope-open-v2.webp"
                         alt=""
                         className="block w-[180px] lg:w-[280px] [filter:hue-rotate(-12deg)_saturate(1.5)_brightness(0.96)_contrast(1.05)]"
                         draggable={false}

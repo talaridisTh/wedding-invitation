@@ -180,7 +180,7 @@ export default function TimelinePage({
 
                 <div className="mt-10 lg:mt-14" data-page-item>
                     <img
-                        src="/images/wedding/timeline-art.png"
+                        src="/images/wedding/timeline-art.webp"
                         alt="Πρόγραμμα της ημέρας"
                         draggable={false}
                         className="mx-auto w-full max-w-md lg:max-w-2xl"

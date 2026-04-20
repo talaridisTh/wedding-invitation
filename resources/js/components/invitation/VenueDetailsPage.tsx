@@ -66,7 +66,7 @@ export default function VenueDetailsPage({
 
                 <div className="mt-10 lg:mt-14" data-page-item>
                     <img
-                        src="/images/wedding/venue-card-art.png"
+                        src="/images/wedding/venue-card-art.webp"
                         alt="Τελετή στο Παρεκκλήσι Αγίου Νεομάρτυρος Γεωργίου εκ Κρήνης και Δεξίωση στην Πίστα Καρτ Λαγκαδά Volan"
                         draggable={false}
                         className="mx-auto w-full max-w-md lg:max-w-2xl"

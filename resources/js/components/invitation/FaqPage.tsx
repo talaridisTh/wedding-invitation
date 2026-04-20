@@ -15,7 +15,7 @@ export default function FaqPage({ items, onBack }: FaqPageProps) {
             <div className="mx-auto max-w-md pt-10 lg:max-w-2xl lg:pt-16">
                 <div data-page-item>
                     <img
-                        src="/images/wedding/faq-art.png"
+                        src="/images/wedding/faq-art.webp"
                         alt="Συχνές ερωτήσεις"
                         draggable={false}
                         className="mx-auto w-full"

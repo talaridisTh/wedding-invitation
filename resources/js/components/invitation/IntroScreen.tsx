@@ -41,7 +41,7 @@ export default function IntroScreen({
                 aria-label={ctaText}
             >
                 <img
-                    src="/images/wedding/envelope-closed.png"
+                    src="/images/wedding/envelope-closed.webp"
                     alt="Προσκλητήριο γάμου"
                     className="w-60 sm:w-72 lg:w-96 [filter:hue-rotate(-12deg)_saturate(1.5)_brightness(0.96)_contrast(1.05)]"
                     draggable={false}
