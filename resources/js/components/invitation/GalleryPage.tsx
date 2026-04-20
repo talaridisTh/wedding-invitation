@@ -124,7 +124,7 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                             type="button"
                             onClick={() => setActiveIndex(index)}
                             data-page-item
-                            className="block overflow-hidden border-2 border-wedding-red transition-colors hover:bg-wedding-red/5"
+                            className="block overflow-hidden shadow-[0_1px_3px_rgba(136,8,8,0.08)] transition-opacity hover:opacity-90"
                         >
                             <img
                                 src={photo.src}

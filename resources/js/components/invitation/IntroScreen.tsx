@@ -43,7 +43,7 @@ export default function IntroScreen({
                 <img
                     src="/images/wedding/envelope-closed.png"
                     alt="Προσκλητήριο γάμου"
-                    className="w-60 sm:w-72"
+                    className="w-60 sm:w-72 [filter:hue-rotate(-12deg)_saturate(1.5)_brightness(0.96)_contrast(1.05)]"
                     draggable={false}
                 />
             </div>

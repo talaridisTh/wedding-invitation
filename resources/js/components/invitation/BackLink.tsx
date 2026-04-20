@@ -7,22 +7,23 @@ export default function BackLink({ onClick }: BackLinkProps) {
         <button
             type="button"
             onClick={onClick}
-            className="inline-flex items-center gap-2 border-2 border-wedding-red px-5 py-2 text-xs font-light tracking-[0.2em] text-wedding-red uppercase transition-colors hover:bg-wedding-red/5"
+            className="group inline-flex items-center gap-3 py-3 text-lg italic text-wedding-red transition-opacity hover:opacity-70"
         >
             <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
+                width="22"
+                height="11"
+                viewBox="0 0 24 12"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth={1}
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 aria-hidden="true"
+                className="transition-transform group-hover:-translate-x-1"
             >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
+                <path d="M23 6H2M7 1.5 2 6l5 4.5" />
             </svg>
-            Πίσω
+            <span>Πίσω</span>
         </button>
     );
 }

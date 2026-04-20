@@ -46,7 +46,7 @@ function Box({
             }
             data-collage-card
             style={{ transform: `rotate(${rotation}deg)` }}
-            className={`flex ${fullWidth ? 'min-h-[150px] flex-row items-center gap-5 px-6' : 'aspect-[3/4] flex-col items-stretch px-4'} border border-wedding-red/35 bg-wedding-red/[0.04] py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
+            className={`relative flex ${fullWidth ? 'min-h-[150px] flex-row items-center gap-5 px-6' : 'aspect-[3/4] flex-col items-stretch px-4'} border border-wedding-red/35 bg-wedding-red/[0.04] py-5 text-wedding-red shadow-[0_1px_2px_rgba(136,8,8,0.05)] ${interactive ? 'cursor-pointer transition-colors hover:bg-wedding-red/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red' : ''}`}
         >
             {fullWidth ? (
                 <>
@@ -96,6 +96,26 @@ function Box({
                         </div>
                     )}
                 </>
+            )}
+
+            {interactive && (
+                <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-3 bottom-2 text-wedding-red/70"
+                >
+                    <svg
+                        viewBox="0 0 24 12"
+                        width="22"
+                        height="11"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <path d="M1 6h21M17 1.5 22 6l-5 4.5" />
+                    </svg>
+                </span>
             )}
         </div>
     );
@@ -157,13 +177,13 @@ function ImageCard({ src, alt = '', rotation = 0 }: ImageCardProps) {
         <div
             data-collage-card
             style={{ transform: `rotate(${rotation}deg)` }}
-            className="flex aspect-[3/4] items-center justify-center border border-wedding-red/35 bg-wedding-red/[0.04] p-4 shadow-[0_1px_2px_rgba(136,8,8,0.05)]"
+            className="aspect-[3/4] overflow-hidden shadow-[0_1px_2px_rgba(136,8,8,0.05)]"
         >
             <img
                 src={src}
                 alt={alt}
                 draggable={false}
-                className="h-full w-full object-contain"
+                className="h-full w-full object-cover"
             />
         </div>
     );
@@ -183,7 +203,7 @@ export default function CollageHome({
                     <img
                         src="/images/wedding/envelope-open-v2.png"
                         alt=""
-                        className="block w-[180px]"
+                        className="block w-[180px] [filter:hue-rotate(-12deg)_saturate(1.5)_brightness(0.96)_contrast(1.05)]"
                         draggable={false}
                     />
                 </div>
@@ -212,14 +232,14 @@ export default function CollageHome({
                         rotation={-0.9}
                     />
                     <ImageCard
-                        src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                        src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop&q=80"
                         alt="Wedding rings"
                         rotation={0.7}
                     />
 
                     {/* Row 2 — placeholder image + box */}
                     <ImageCard
-                        src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"
+                        src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=800&fit=crop&q=80"
                         alt="Wedding aisle"
                         rotation={-0.5}
                     />
@@ -242,7 +262,7 @@ export default function CollageHome({
                         onClick={() => onNavigate('rsvp')}
                     />
                     <ImageCard
-                        src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80"
+                        src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop&q=80"
                         alt="Bridal flowers"
                         rotation={0.6}
                     />
