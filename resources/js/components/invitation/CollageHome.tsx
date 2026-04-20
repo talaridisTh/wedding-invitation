@@ -8,11 +8,17 @@ interface CollageHomeProps {
     onNavigate: (page: 'venue' | 'timeline' | 'faq' | 'rsvp' | 'gallery') => void;
 }
 
+interface BoxLocation {
+    name: string;
+    href: string;
+}
+
 interface BoxProps {
     icon: ReactNode;
     label: string;
     title?: string;
     lines?: string[];
+    locations?: BoxLocation[];
     onClick?: () => void;
     rotation?: number;
     fullWidth?: boolean;
@@ -23,6 +29,7 @@ function Box({
     label,
     title,
     lines,
+    locations,
     onClick,
     rotation = 0,
     fullWidth = false,
@@ -92,6 +99,25 @@ function Box({
                         <div className="space-y-0.5 text-center text-[11px] font-light opacity-80 lg:text-sm">
                             {lines.map((line) => (
                                 <p key={line}>{line}</p>
+                            ))}
+                        </div>
+                    )}
+
+                    {locations && locations.length > 0 && (
+                        <div className="mt-3 space-y-1.5 text-center lg:mt-4 lg:space-y-2">
+                            {locations.map((loc) => (
+                                <a
+                                    key={loc.href}
+                                    href={loc.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(event) =>
+                                        event.stopPropagation()
+                                    }
+                                    className="block text-[10px] leading-snug italic text-balance underline decoration-wedding-red/40 underline-offset-2 transition-opacity hover:opacity-70 lg:text-xs"
+                                >
+                                    {loc.name} →
+                                </a>
                             ))}
                         </div>
                     )}
@@ -229,6 +255,16 @@ export default function CollageHome({
                         label="Save the Date"
                         title={dateDisplay}
                         lines={[`Ώρα ${ceremonyTime}`]}
+                        locations={[
+                            {
+                                name: 'Αγ. Γεώργιος εκ Κρήνης',
+                                href: 'https://maps.app.goo.gl/uPNXjCDZdCDiXVRTA?g_st=ic',
+                            },
+                            {
+                                name: 'Πίστα Καρτ Volan',
+                                href: 'https://maps.app.goo.gl/KgUYpEhmHLRJZGRB8?g_st=ic',
+                            },
+                        ]}
                         rotation={-0.9}
                     />
                     <ImageCard

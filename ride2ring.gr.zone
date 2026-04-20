@@ -1,0 +1,16 @@
+$ORIGIN    ride2ring.gr.
+$TTL    3600
+
+@    IN    SOA    hydrogen.ns.hetzner.com. dns.hetzner.com. 2026042001 86400 10800 3600000 3600
+
+; NS records
+@    IN    NS    helium.ns.hetzner.de.
+@    IN    NS    hydrogen.ns.hetzner.com.
+@    IN    NS    oxygen.ns.hetzner.com.
+
+; A records — Ploi server
+@      IN    A       159.69.43.216
+www    IN    A       159.69.43.216
+
+; CAA — restrict cert issuance to Let's Encrypt
+@      IN    CAA     0 issue "letsencrypt.org"
