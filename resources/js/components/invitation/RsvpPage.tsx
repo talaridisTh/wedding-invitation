@@ -1,15 +1,10 @@
 import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
 import { store } from '@/actions/App/Http/Controllers/RsvpController';
-import type { WeddingChurch, WeddingReception } from '@/types';
 import BackLink from './BackLink';
-import { LocationItem } from './LocationCard';
 
 interface RsvpPageProps {
     deadlineDisplay: string;
-    church: WeddingChurch;
-    reception: WeddingReception;
-    ceremonyTime: string;
     onBack: () => void;
 }
 
@@ -50,13 +45,7 @@ function CheckIcon({ className }: { className?: string }) {
     );
 }
 
-export default function RsvpPage({
-    deadlineDisplay,
-    church,
-    reception,
-    ceremonyTime,
-    onBack,
-}: RsvpPageProps) {
+export default function RsvpPage({ deadlineDisplay, onBack }: RsvpPageProps) {
     const [confirmedName, setConfirmedName] = useState<string | null>(null);
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
@@ -195,43 +184,7 @@ export default function RsvpPage({
                     </div>
                 )}
 
-                <div
-                    className="mt-16 flex items-center gap-4 lg:mt-24"
-                    data-page-item
-                >
-                    <div className="h-px flex-1 bg-wedding-red/25" />
-                    <p className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-xs">
-                        Τοποθεσίες
-                    </p>
-                    <div className="h-px flex-1 bg-wedding-red/25" />
-                </div>
-
-                <ol className="relative mt-10 lg:mt-14">
-                    <div className="mb-16 lg:mb-24">
-                        <LocationItem
-                            image="/images/wedding/venue-church-art.png"
-                            imageAlt="Εκκλησία"
-                            label="Τελετή Γάμου"
-                            title={church.name}
-                            time={ceremonyTime}
-                            address={church.arrival_note}
-                            href={church.maps_url}
-                        />
-                    </div>
-
-                    <LocationItem
-                        image="/images/wedding/venue-party-art.png"
-                        imageAlt="Γλέντι"
-                        label="Δεξίωση"
-                        title={reception.venue}
-                        time={reception.peak_time}
-                        address={reception.full_address}
-                        note={reception.note}
-                        href={reception.maps_url}
-                    />
-                </ol>
-
-                <div className="mt-16 flex justify-center lg:mt-24" data-page-item>
+                <div className="mt-12 flex justify-center lg:mt-20" data-page-item>
                     <BackLink onClick={onBack} />
                 </div>
             </div>
