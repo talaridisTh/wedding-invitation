@@ -262,6 +262,9 @@ export default function InvitationPage({ wedding }: { wedding: Wedding }) {
                 <div ref={pageRef}>
                     <RsvpPage
                         deadlineDisplay={wedding.rsvp.deadline_display}
+                        church={wedding.church}
+                        reception={wedding.reception}
+                        ceremonyTime={wedding.ceremony_time_display}
                         onBack={navigateBack}
                     />
                 </div>

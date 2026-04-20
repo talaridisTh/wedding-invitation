@@ -25,7 +25,7 @@ return [
     'church' => [
         'name' => 'Παρεκκλήσι Αγίου Νεομάρτυρος Γεωργίου εκ Κρήνης',
         'address' => '',
-        'maps_url' => 'https://share.google/8a7smo0iKEUsYLGA2',
+        'maps_url' => 'https://maps.app.goo.gl/uPNXjCDZdCDiXVRTA?g_st=ic',
         'arrival_note' => 'Προτείνεται άφιξη 15 λεπτά πριν την ώρα έναρξης',
     ],
 
@@ -40,7 +40,7 @@ return [
         'address' => 'Κολχικό',
         'full_address' => '2ο χιλ, Κολχικό',
         'peak_time' => '19:30',
-        'maps_url' => 'https://share.google/8a7smo0iKEUsYLGA2',
+        'maps_url' => 'https://maps.app.goo.gl/KgUYpEhmHLRJZGRB8?g_st=ic',
         'note' => 'Μη ξεχάσετε τα αθλητικά ή τα σανδάλια σας... θα τα χρειαστείτε!',
     ],
 

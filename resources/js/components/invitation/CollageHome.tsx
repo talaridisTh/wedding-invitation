@@ -8,18 +8,13 @@ interface CollageHomeProps {
     onNavigate: (page: 'venue' | 'timeline' | 'faq' | 'rsvp' | 'gallery') => void;
 }
 
-interface BoxLocation {
-    name: string;
-    href: string;
-}
-
 interface BoxProps {
     icon: ReactNode;
     label: string;
     title?: string;
     lines?: string[];
-    locations?: BoxLocation[];
     onClick?: () => void;
+    href?: string;
     rotation?: number;
     fullWidth?: boolean;
 }
@@ -29,24 +24,27 @@ function Box({
     label,
     title,
     lines,
-    locations,
     onClick,
+    href,
     rotation = 0,
     fullWidth = false,
 }: BoxProps) {
-    const interactive = onClick !== undefined;
+    const activate = href
+        ? () => window.open(href, '_blank', 'noopener,noreferrer')
+        : onClick;
+    const interactive = activate !== undefined;
 
     return (
         <div
             role={interactive ? 'button' : undefined}
             tabIndex={interactive ? 0 : undefined}
-            onClick={onClick}
+            onClick={activate}
             onKeyDown={
-                interactive
+                interactive && activate
                     ? (event) => {
                           if (event.key === 'Enter' || event.key === ' ') {
                               event.preventDefault();
-                              onClick();
+                              activate();
                           }
                       }
                     : undefined
@@ -103,24 +101,6 @@ function Box({
                         </div>
                     )}
 
-                    {locations && locations.length > 0 && (
-                        <div className="mt-3 space-y-1.5 text-center lg:mt-4 lg:space-y-2">
-                            {locations.map((loc) => (
-                                <a
-                                    key={loc.href}
-                                    href={loc.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={(event) =>
-                                        event.stopPropagation()
-                                    }
-                                    className="block text-[10px] leading-snug italic text-balance underline decoration-wedding-red/40 underline-offset-2 transition-opacity hover:opacity-70 lg:text-xs"
-                                >
-                                    {loc.name} →
-                                </a>
-                            ))}
-                        </div>
-                    )}
                 </>
             )}
 
@@ -224,7 +204,7 @@ export default function CollageHome({
 }: CollageHomeProps) {
     return (
         <div className="inv-screen relative overflow-y-auto bg-wedding-cream-light px-4 py-8 lg:px-12 lg:py-16">
-            <div className="mx-auto max-w-md lg:max-w-6xl">
+            <div className="mx-auto max-w-md lg:max-w-3xl">
                 <div className="mb-6 flex justify-center lg:mb-10" data-collage-card>
                     <img
                         src="/images/wedding/envelope-open-v2.png"
@@ -248,24 +228,15 @@ export default function CollageHome({
                     data-collage-card
                 />
 
-                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-8">
+                <div className="grid grid-cols-2 gap-4 lg:gap-6">
                     {/* Row 1 — box + placeholder image */}
                     <Box
                         icon={RingsIcon}
                         label="Save the Date"
                         title={dateDisplay}
-                        lines={[`Ώρα ${ceremonyTime}`]}
-                        locations={[
-                            {
-                                name: 'Αγ. Γεώργιος εκ Κρήνης',
-                                href: 'https://maps.app.goo.gl/uPNXjCDZdCDiXVRTA?g_st=ic',
-                            },
-                            {
-                                name: 'Πίστα Καρτ Volan',
-                                href: 'https://maps.app.goo.gl/KgUYpEhmHLRJZGRB8?g_st=ic',
-                            },
-                        ]}
+                        lines={[`Ώρα ${ceremonyTime}`, 'Δείτε τοποθεσίες']}
                         rotation={-0.9}
+                        onClick={() => onNavigate('venue')}
                     />
                     <ImageCard
                         src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop&q=80"
@@ -303,7 +274,7 @@ export default function CollageHome({
                         rotation={0.6}
                     />
 
-                    <div className="col-span-2 lg:col-span-3">
+                    <div className="col-span-2">
                         <Box
                             icon={QuestionIcon}
                             label="FAQ"
