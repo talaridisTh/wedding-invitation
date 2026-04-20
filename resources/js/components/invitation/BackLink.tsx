@@ -1,9 +1,8 @@
 interface BackLinkProps {
     onClick: () => void;
-    light?: boolean;
 }
 
-export default function BackLink({ onClick, light = false }: BackLinkProps) {
+export default function BackLink({ onClick }: BackLinkProps) {
     return (
         <button
             type="button"

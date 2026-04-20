@@ -2,7 +2,6 @@ import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
 import { store } from '@/actions/App/Http/Controllers/RsvpController';
 import BackLink from './BackLink';
-import { BranchTopRight, LeafSprig } from './Botanicals';
 
 interface RsvpPageProps {
     deadlineDisplay: string;

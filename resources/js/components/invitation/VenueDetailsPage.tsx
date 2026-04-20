@@ -1,6 +1,5 @@
 import type { WeddingChurch, WeddingReception } from '@/types';
 import BackLink from './BackLink';
-import { LeafSprig, BranchTopRight } from './Botanicals';
 
 interface VenueDetailsPageProps {
     church: WeddingChurch;
@@ -39,7 +38,7 @@ export default function VenueDetailsPage({
                         href={church.maps_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-3 inline-block font-body text-sm font-light text-wedding-gold"
+                        className="mt-3 inline-block text-sm font-medium underline"
                     >
                         Χάρτης →
                     </a>
@@ -58,13 +57,11 @@ export default function VenueDetailsPage({
                         href={reception.maps_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-3 inline-block font-body text-sm font-light text-wedding-gold"
+                        className="mt-3 inline-block text-sm font-medium underline"
                     >
                         Χάρτης →
                     </a>
-                    <p className="mt-4 font-body text-xs text-wedding-brown-light italic">
-                        {reception.note}
-                    </p>
+                    <p className="mt-4 text-xs font-light italic">{reception.note}</p>
                 </div>
                 </div>
 

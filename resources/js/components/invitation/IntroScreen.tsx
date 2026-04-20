@@ -1,5 +1,3 @@
-import { LeafSprig } from './Botanicals';
-
 interface IntroScreenProps {
     bride: string;
     groom: string;
@@ -23,10 +21,7 @@ export default function IntroScreen({
     }
 
     return (
-        <div className="inv-screen inv-bg relative flex flex-col items-center justify-center px-6">
-            <LeafSprig className="absolute top-12 right-6 opacity-50" />
-            <LeafSprig className="absolute bottom-16 left-6 rotate-180 opacity-40" />
-
+        <div className="inv-screen relative flex flex-col items-center justify-center bg-wedding-cream-light px-6 text-wedding-red">
             <div className="text-center">
                 <p className="text-5xl font-medium italic sm:text-6xl lg:text-8xl">{bride}</p>
                 <p className="my-1 text-xl font-light sm:text-2xl lg:my-2 lg:text-3xl">&amp;</p>

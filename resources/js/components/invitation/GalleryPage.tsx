@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import BackLink from './BackLink';
-import { BranchTopRight, LeafSprig } from './Botanicals';
 
 interface GalleryPhoto {
     src: string;
@@ -97,7 +96,7 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
         <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
             <div className="mx-auto max-w-md pt-10 lg:max-w-5xl lg:pt-20">
                 <p
-                    className="font-body text-[10px] font-light tracking-[0.3em] text-wedding-gold uppercase"
+                    className="text-[10px] font-light tracking-[0.3em] uppercase"
                     data-page-item
                 >
                     Save the Date
@@ -112,7 +111,7 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                 <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
                 <p
-                    className="mt-6 font-body text-sm leading-relaxed font-light text-wedding-brown-light italic"
+                    className="mt-6 text-sm leading-relaxed font-light italic"
                     data-page-item
                 >
                     Μερικές στιγμές από το ταξίδι μας...
@@ -138,16 +137,7 @@ export default function GalleryPage({ dateDisplay, onBack }: GalleryPageProps) {
                     ))}
                 </div>
 
-                <div className="my-10" data-page-item>
-                    <img
-                        src="/images/wedding/gold-divider.png"
-                        alt=""
-                        className="w-full"
-                        draggable={false}
-                    />
-                </div>
-
-                <div className="flex justify-center" data-page-item>
+                <div className="mt-10 flex justify-center" data-page-item>
                     <BackLink onClick={onBack} />
                 </div>
             </div>

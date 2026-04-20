@@ -1,7 +1,6 @@
 import type { ComponentType } from 'react';
 import type { WeddingTimelineIcon, WeddingTimelineItem } from '@/types';
 import BackLink from './BackLink';
-import { BranchTopLeft, LeafSprig } from './Botanicals';
 
 interface TimelinePageProps {
     dateDisplay: string;

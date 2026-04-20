@@ -1,6 +1,5 @@
 import type { WeddingFaqItem } from '@/types';
 import BackLink from './BackLink';
-import { BranchLight, LeafSprigLight } from './Botanicals';
 
 interface FaqPageProps {
     items: WeddingFaqItem[];
