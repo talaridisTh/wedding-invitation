@@ -183,8 +183,11 @@ export default function FindYourTable({ tables }: FindYourTableProps) {
                             <ul
                                 className={`space-y-1 text-sm font-light lg:text-base ${table.group ? 'mt-2 lg:mt-3' : ''}`}
                             >
-                                {table.guests.map((guest) => (
-                                    <li key={guest} className="italic">
+                                {table.guests.map((guest, idx) => (
+                                    <li
+                                        key={`${guest}-${idx}`}
+                                        className="italic"
+                                    >
                                         {guest}
                                     </li>
                                 ))}
