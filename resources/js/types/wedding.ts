@@ -75,6 +75,12 @@ export interface WeddingFaqItem {
     answer: string;
 }
 
+export interface WeddingTable {
+    number: number;
+    group: string;
+    guests: string[];
+}
+
 export interface Wedding {
     bride: string;
     groom: string;
@@ -92,4 +98,5 @@ export interface Wedding {
     hero_image: string;
     timeline: WeddingTimelineItem[];
     faq: WeddingFaqItem[];
+    tables: WeddingTable[];
 }

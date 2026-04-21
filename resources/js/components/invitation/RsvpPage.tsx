@@ -1,10 +1,13 @@
 import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
 import { store } from '@/actions/App/Http/Controllers/RsvpController';
+import type { WeddingTable } from '@/types';
 import BackLink from './BackLink';
+import FindYourTable from './FindYourTable';
 
 interface RsvpPageProps {
     deadlineDisplay: string;
+    tables: WeddingTable[];
     onBack: () => void;
 }
 
@@ -45,7 +48,11 @@ function CheckIcon({ className }: { className?: string }) {
     );
 }
 
-export default function RsvpPage({ deadlineDisplay, onBack }: RsvpPageProps) {
+export default function RsvpPage({
+    deadlineDisplay,
+    tables,
+    onBack,
+}: RsvpPageProps) {
     const [confirmedName, setConfirmedName] = useState<string | null>(null);
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
@@ -82,6 +89,18 @@ export default function RsvpPage({ deadlineDisplay, onBack }: RsvpPageProps) {
                     Παρουσίας
                 </h2>
                 <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
+
+                <div className="mt-12 lg:mt-16">
+                    <FindYourTable tables={tables} />
+                </div>
+
+                <div className="mt-12 flex items-center gap-4 lg:mt-16" data-page-item>
+                    <div className="h-px flex-1 bg-wedding-red/25" />
+                    <p className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-xs">
+                        Επιβεβαίωση
+                    </p>
+                    <div className="h-px flex-1 bg-wedding-red/25" />
+                </div>
 
                 {confirmedName === null ? (
                     <>
