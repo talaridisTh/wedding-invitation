@@ -37,6 +37,7 @@ function buildIndex(tables: WeddingTable[]): IndexEntry[] {
 
 export default function FindYourTable({ tables }: FindYourTableProps) {
     const [query, setQuery] = useState('');
+    const [showFullList, setShowFullList] = useState(false);
     const index = useMemo(() => buildIndex(tables), [tables]);
 
     const normalizedQuery = normalize(query);
@@ -131,6 +132,67 @@ export default function FindYourTable({ tables }: FindYourTableProps) {
                     </div>
                 )}
             </div>
+
+            <div className="mt-4 flex justify-center lg:mt-6">
+                <button
+                    type="button"
+                    onClick={() => setShowFullList((v) => !v)}
+                    className="group inline-flex items-baseline gap-3 border-b border-wedding-red/50 pb-1 text-sm italic text-wedding-red transition-opacity hover:opacity-70 lg:text-base"
+                >
+                    {showFullList
+                        ? 'Απόκρυψη λίστας'
+                        : 'Δείτε όλη τη λίστα'}
+                    <svg
+                        viewBox="0 0 24 12"
+                        width="22"
+                        height="11"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                        className={`transition-transform ${showFullList ? '-rotate-90' : 'rotate-90'}`}
+                    >
+                        <path d="M1 6h21M17 1.5 22 6l-5 4.5" />
+                    </svg>
+                </button>
+            </div>
+
+            {showFullList && (
+                <div className="mt-10 space-y-10 text-left lg:mt-14 lg:space-y-14">
+                    {tables.map((table) => (
+                        <div
+                            key={table.number}
+                            className="relative pl-20 lg:pl-28"
+                        >
+                            <div className="absolute top-0 left-0 flex h-14 w-14 flex-col items-center justify-center text-center lg:h-20 lg:w-20">
+                                <span className="text-[9px] font-light tracking-[0.3em] uppercase opacity-70 lg:text-[10px]">
+                                    Τραπέζι
+                                </span>
+                                <span className="text-3xl leading-none font-medium italic lg:text-5xl">
+                                    {table.number}
+                                </span>
+                            </div>
+
+                            {table.group && (
+                                <p className="text-[10px] font-light tracking-[0.3em] uppercase opacity-70 lg:text-xs">
+                                    {table.group}
+                                </p>
+                            )}
+                            <ul
+                                className={`space-y-1 text-sm font-light lg:text-base ${table.group ? 'mt-2 lg:mt-3' : ''}`}
+                            >
+                                {table.guests.map((guest) => (
+                                    <li key={guest} className="italic">
+                                        {guest}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            )}
         </section>
     );
 }
