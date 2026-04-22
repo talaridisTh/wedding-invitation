@@ -176,20 +176,28 @@ interface ImageCardProps {
     src: string;
     alt?: string;
     rotation?: number;
+    aspect?: string;
+    objectPosition?: string;
 }
 
-function ImageCard({ src, alt = '', rotation = 0 }: ImageCardProps) {
+function ImageCard({
+    src,
+    alt = '',
+    rotation = 0,
+    aspect = 'aspect-[3/4]',
+    objectPosition = 'object-center',
+}: ImageCardProps) {
     return (
         <div
             data-collage-card
             style={{ transform: `rotate(${rotation}deg)` }}
-            className="aspect-[3/4] overflow-hidden shadow-[0_1px_2px_rgba(136,8,8,0.05)]"
+            className={`${aspect} overflow-hidden shadow-[0_1px_2px_rgba(136,8,8,0.05)]`}
         >
             <img
                 src={src}
                 alt={alt}
                 draggable={false}
-                className="h-full w-full object-cover"
+                className={`h-full w-full object-cover ${objectPosition}`}
             />
         </div>
     );
@@ -273,6 +281,16 @@ export default function CollageHome({
                         alt="Φώτης & Τίνη"
                         rotation={0.6}
                     />
+
+                    <div className="col-span-2">
+                        <ImageCard
+                            src="/images/wedding/couple/couple-ride.jpg"
+                            alt="Βόλτα στην πόλη"
+                            rotation={0.5}
+                            aspect="aspect-[16/9]"
+                            objectPosition="object-[center_65%]"
+                        />
+                    </div>
 
                     <div className="col-span-2">
                         <Box
