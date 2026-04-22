@@ -29,28 +29,32 @@ export default function GiftCard({ gift, variant = 'full' }: GiftCardProps) {
                 variant === 'compact' ? 'px-5 py-6 lg:px-8 lg:py-8' : 'px-6 py-8 lg:px-10 lg:py-10'
             }`}
         >
-            <p className="text-[11px] font-medium tracking-[0.25em] uppercase lg:text-xs">
+            <p className="text-[10px] font-normal tracking-[0.25em] uppercase opacity-80 lg:text-xs">
                 Δώρο γάμου
             </p>
 
             {showQuestion && (
-                <p className="mt-3 text-xl leading-tight font-medium lg:text-2xl">
+                <p className="mt-2 text-xl leading-tight font-medium italic lg:text-2xl">
                     {gift.question}
                 </p>
             )}
 
+            <p className="mt-3 text-sm leading-relaxed font-light italic opacity-85 lg:text-base">
+                {gift.intro}
+            </p>
+
             <dl className="mt-5 space-y-4">
                 <div>
-                    <dt className="text-[10px] font-medium tracking-[0.2em] uppercase opacity-75 lg:text-[11px]">
+                    <dt className="text-[10px] font-normal tracking-[0.2em] uppercase opacity-70 lg:text-[11px]">
                         Τράπεζα
                     </dt>
-                    <dd className="mt-1 text-base font-medium lg:text-lg">
+                    <dd className="mt-1 text-lg leading-tight font-medium italic lg:text-xl">
                         {gift.bank}
                     </dd>
                 </div>
 
                 <div>
-                    <dt className="text-[10px] font-medium tracking-[0.2em] uppercase opacity-75 lg:text-[11px]">
+                    <dt className="text-[10px] font-normal tracking-[0.2em] uppercase opacity-70 lg:text-[11px]">
                         IBAN
                     </dt>
                     <dd className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -68,10 +72,10 @@ export default function GiftCard({ gift, variant = 'full' }: GiftCardProps) {
                 </div>
 
                 <div>
-                    <dt className="text-[10px] font-medium tracking-[0.2em] uppercase opacity-75 lg:text-[11px]">
+                    <dt className="text-[10px] font-normal tracking-[0.2em] uppercase opacity-70 lg:text-[11px]">
                         Αιτιολογία
                     </dt>
-                    <dd className="mt-1 text-base font-medium lg:text-lg">
+                    <dd className="mt-1 text-lg leading-tight font-medium italic lg:text-xl">
                         «{gift.reason}»
                     </dd>
                 </div>
