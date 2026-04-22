@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import type { WeddingFaqItem, WeddingGift } from '@/types';
 import BackLink from './BackLink';
-import GiftCard from './GiftCard';
 
 interface FaqPageProps {
     items: WeddingFaqItem[];
@@ -12,20 +12,57 @@ export default function FaqPage({ items, gift, onBack }: FaqPageProps) {
     // items are baked into the hero illustration; prop kept for future use
     void items;
 
+    const [copied, setCopied] = useState(false);
+
+    const handleCopyIban = async (): Promise<void> => {
+        try {
+            await navigator.clipboard.writeText(gift.iban);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 2000);
+        } catch {
+            /* clipboard unavailable — ignore */
+        }
+    };
+
     return (
         <div className="inv-screen relative bg-wedding-cream-light px-6 pt-0 pb-12 text-wedding-red lg:px-12 lg:pb-24">
             <div className="mx-auto max-w-md pt-10 lg:max-w-2xl lg:pt-16">
-                <div data-page-item>
+                <div className="relative" data-page-item>
                     <img
-                        src="/images/wedding/faq-art.webp"
+                        src="/images/wedding/faq-art-v2.webp"
                         alt="Συχνές ερωτήσεις"
                         draggable={false}
                         className="mx-auto w-full"
                     />
-                </div>
 
-                <div className="mt-10 lg:mt-14" data-page-item>
-                    <GiftCard gift={gift} />
+                    {/*
+                        Hotspot για το «Αντιγραφή» oval που είναι μέσα στην
+                        εικόνα. Τα ποσοστά είναι σχετικά με το image container —
+                        κλιμακώνονται σωστά σε όλα τα μεγέθη οθόνης.
+                    */}
+                    <button
+                        type="button"
+                        onClick={handleCopyIban}
+                        aria-label={
+                            copied
+                                ? 'Ο IBAN αντιγράφηκε'
+                                : 'Αντιγραφή IBAN στο πρόχειρο'
+                        }
+                        className="group absolute left-[18%] top-[88.5%] h-[3.5%] w-[26%] cursor-pointer rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red"
+                    >
+                        <span className="sr-only">
+                            {copied ? 'Ο IBAN αντιγράφηκε' : 'Αντιγραφή IBAN'}
+                        </span>
+                    </button>
+
+                    {copied && (
+                        <div
+                            aria-hidden="true"
+                            className="pointer-events-none absolute left-1/2 top-[94%] -translate-x-1/2 whitespace-nowrap rounded-full bg-wedding-red px-3 py-1 text-[11px] font-medium tracking-[0.15em] uppercase text-wedding-cream-light shadow-lg"
+                        >
+                            Αντιγράφηκε
+                        </div>
+                    )}
                 </div>
 
                 {/*
