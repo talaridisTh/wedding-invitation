@@ -90,18 +90,6 @@ export default function RsvpPage({
                 </h2>
                 <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
-                <div className="mt-12 lg:mt-16">
-                    <FindYourTable tables={tables} />
-                </div>
-
-                <div className="mt-12 flex items-center gap-4 lg:mt-16" data-page-item>
-                    <div className="h-px flex-1 bg-wedding-red/25" />
-                    <p className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-xs">
-                        Επιβεβαίωση
-                    </p>
-                    <div className="h-px flex-1 bg-wedding-red/25" />
-                </div>
-
                 {confirmedName === null ? (
                     <>
                         <div
@@ -202,6 +190,18 @@ export default function RsvpPage({
                         </p>
                     </div>
                 )}
+
+                <div className="mt-16 flex items-center gap-4 lg:mt-24" data-page-item>
+                    <div className="h-px flex-1 bg-wedding-red/25" />
+                    <p className="text-[10px] font-light tracking-[0.3em] uppercase lg:text-xs">
+                        Τραπέζια
+                    </p>
+                    <div className="h-px flex-1 bg-wedding-red/25" />
+                </div>
+
+                <div className="mt-10 lg:mt-14">
+                    <FindYourTable tables={tables} />
+                </div>
 
                 <div className="mt-12 flex justify-center lg:mt-20" data-page-item>
                     <BackLink onClick={onBack} />
