@@ -91,20 +91,17 @@ export default function RsvpPage({
                 <div className="mt-3 h-px w-16 bg-wedding-red lg:mx-auto lg:mt-6 lg:w-32" data-page-item />
 
                 {confirmedName === null ? (
-                    <>
-                        <div
-                            className="mt-10 flex justify-center"
-                            data-page-item
-                        >
+                    <div
+                        className="mt-10 border border-wedding-red/30 bg-wedding-red/[0.04] px-6 py-10 shadow-[0_2px_8px_rgba(136,8,8,0.06)] lg:mt-14 lg:px-12 lg:py-16"
+                        data-page-item
+                    >
+                        <div className="flex justify-center">
                             <div className="flex h-20 w-20 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:h-28 lg:w-28">
                                 <EnvelopeIcon className="h-9 w-9 lg:h-12 lg:w-12" />
                             </div>
                         </div>
 
-                        <p
-                            className="mt-6 text-center text-sm leading-relaxed font-light"
-                            data-page-item
-                        >
+                        <p className="mt-6 text-center text-sm leading-relaxed font-light">
                             {deadlineDisplay}
                         </p>
 
@@ -114,7 +111,6 @@ export default function RsvpPage({
                                 submitRsvp();
                             }}
                             className="mt-10"
-                            data-page-item
                             noValidate
                         >
                             <label
@@ -172,10 +168,13 @@ export default function RsvpPage({
                                 </span>
                             </button>
                         </form>
-                    </>
+                    </div>
                 ) : (
-                    <div className="mt-12 flex flex-col items-center text-center" data-page-item>
-                        <div className="flex h-20 w-20 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)]">
+                    <div
+                        className="mt-10 flex flex-col items-center border border-wedding-red/30 bg-wedding-red/[0.04] px-6 py-12 text-center shadow-[0_2px_8px_rgba(136,8,8,0.06)] lg:mt-14 lg:px-12 lg:py-16"
+                        data-page-item
+                    >
+                        <div className="flex h-20 w-20 items-center justify-center rounded-full border border-wedding-red/35 bg-wedding-cream-light shadow-[0_1px_2px_rgba(136,8,8,0.05)] lg:h-28 lg:w-28">
                             <CheckIcon className="h-10 w-10 lg:h-14 lg:w-14" />
                         </div>
                         <p className="mt-6 text-2xl leading-tight font-medium italic lg:mt-8 lg:text-4xl">
