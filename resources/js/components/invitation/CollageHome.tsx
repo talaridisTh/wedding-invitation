@@ -239,15 +239,15 @@ export default function CollageHome({
                         onClick={() => onNavigate('venue')}
                     />
                     <ImageCard
-                        src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop&q=80"
-                        alt="Wedding rings"
+                        src="/images/wedding/couple/couple-01.jpg"
+                        alt="Φώτης & Τίνη"
                         rotation={0.7}
                     />
 
                     {/* Row 2 — placeholder image + box */}
                     <ImageCard
-                        src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=800&fit=crop&q=80"
-                        alt="Wedding aisle"
+                        src="/images/wedding/couple/couple-02.jpg"
+                        alt="Φώτης & Τίνη στα Μετέωρα"
                         rotation={-0.5}
                     />
                     <Box
@@ -269,8 +269,8 @@ export default function CollageHome({
                         onClick={() => onNavigate('rsvp')}
                     />
                     <ImageCard
-                        src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop&q=80"
-                        alt="Bridal flowers"
+                        src="/images/wedding/couple/couple-03.jpg"
+                        alt="Φώτης & Τίνη"
                         rotation={0.6}
                     />
 

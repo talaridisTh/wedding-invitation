@@ -9,34 +9,19 @@ interface GalleryPhoto {
 
 const photos: GalleryPhoto[] = [
     {
-        src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
-        alt: 'Wedding rings on bouquet',
+        src: '/images/wedding/couple/couple-01.jpg',
+        alt: 'Φώτης & Τίνη — καλοκαιρινή selfie',
         rotation: -1.5,
     },
     {
-        src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80',
-        alt: 'Wedding ceremony aisle',
+        src: '/images/wedding/couple/couple-02.jpg',
+        alt: 'Φώτης & Τίνη στα Μετέωρα',
         rotation: 1.2,
     },
     {
-        src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80',
-        alt: 'Bridal flowers',
+        src: '/images/wedding/couple/couple-03.jpg',
+        alt: 'Φώτης & Τίνη — κοντινή αγκαλιά',
         rotation: -0.8,
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80',
-        alt: 'Wedding arch',
-        rotation: 1.5,
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80',
-        alt: 'Bridal bouquet close-up',
-        rotation: -1.2,
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80',
-        alt: 'Couple walking',
-        rotation: 0.9,
     },
 ];
 
