@@ -282,14 +282,14 @@ export default function CollageHome({
                         rotation={0.6}
                     />
 
-                    <div className="col-span-2">
-                        <ImageCard
-                            src="/images/wedding/couple/couple-ride.jpg"
-                            alt="Βόλτα στην πόλη"
-                            rotation={0.5}
-                            aspect="aspect-[16/9]"
-                            objectPosition="object-[center_65%]"
-                        />
+                    <div className="col-span-2 flex justify-center">
+                        <div className="w-1/2 lg:w-1/3">
+                            <ImageCard
+                                src="/images/wedding/couple/couple-ride.jpg"
+                                alt="Βόλτα στην πόλη"
+                                rotation={0.5}
+                            />
+                        </div>
                     </div>
 
                     <div className="col-span-2">
