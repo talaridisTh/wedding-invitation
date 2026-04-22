@@ -32,7 +32,7 @@ export default function FaqPage({ items, gift, onBack }: FaqPageProps) {
                         src="/images/wedding/faq-art-v2.webp"
                         alt="Συχνές ερωτήσεις"
                         draggable={false}
-                        className="mx-auto w-full"
+                        className="mx-auto block w-full mix-blend-multiply"
                     />
 
                     {/*
