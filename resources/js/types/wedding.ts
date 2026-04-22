@@ -83,11 +83,9 @@ export interface WeddingTable {
 
 export interface WeddingGift {
     question: string;
-    intro: string;
     bank: string;
     iban: string;
     reason: string;
-    reason_note: string;
 }
 
 export interface Wedding {
