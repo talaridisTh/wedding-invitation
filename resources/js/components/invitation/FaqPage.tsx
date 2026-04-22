@@ -36,9 +36,10 @@ export default function FaqPage({ items, gift, onBack }: FaqPageProps) {
                     />
 
                     {/*
-                        Hotspot για το «Αντιγραφή» oval που είναι μέσα στην
-                        εικόνα. Τα ποσοστά είναι σχετικά με το image container —
-                        κλιμακώνονται σωστά σε όλα τα μεγέθη οθόνης.
+                        Hotspots πάνω από την εικόνα: το «Αντιγραφή» oval και η
+                        IBAN γραμμή. Και τα δύο αντιγράφουν τον IBAN στο
+                        clipboard. Ποσοστά σχετικά με το image container ώστε να
+                        κλιμακώνονται σε όλα τα μεγέθη οθόνης.
                     */}
                     <button
                         type="button"
@@ -48,11 +49,24 @@ export default function FaqPage({ items, gift, onBack }: FaqPageProps) {
                                 ? 'Ο IBAN αντιγράφηκε'
                                 : 'Αντιγραφή IBAN στο πρόχειρο'
                         }
-                        className="group absolute left-[18%] top-[88.5%] h-[3.5%] w-[26%] cursor-pointer rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red"
+                        className="absolute left-[17%] top-[89%] h-[4%] w-[31%] cursor-pointer rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red"
                     >
                         <span className="sr-only">
                             {copied ? 'Ο IBAN αντιγράφηκε' : 'Αντιγραφή IBAN'}
                         </span>
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={handleCopyIban}
+                        aria-label={
+                            copied
+                                ? 'Ο IBAN αντιγράφηκε'
+                                : 'Αντιγραφή IBAN στο πρόχειρο'
+                        }
+                        className="absolute left-[37%] top-[83.5%] h-[3.8%] w-[50%] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-red"
+                    >
+                        <span className="sr-only">Αντιγραφή IBAN</span>
                     </button>
 
                     {copied && (
