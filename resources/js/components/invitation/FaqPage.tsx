@@ -1,12 +1,14 @@
-import type { WeddingFaqItem } from '@/types';
+import type { WeddingFaqItem, WeddingGift } from '@/types';
 import BackLink from './BackLink';
+import GiftCard from './GiftCard';
 
 interface FaqPageProps {
     items: WeddingFaqItem[];
+    gift: WeddingGift;
     onBack: () => void;
 }
 
-export default function FaqPage({ items, onBack }: FaqPageProps) {
+export default function FaqPage({ items, gift, onBack }: FaqPageProps) {
     // items are baked into the hero illustration; prop kept for future use
     void items;
 
@@ -20,6 +22,10 @@ export default function FaqPage({ items, onBack }: FaqPageProps) {
                         draggable={false}
                         className="mx-auto w-full"
                     />
+                </div>
+
+                <div className="mt-10 lg:mt-14" data-page-item>
+                    <GiftCard gift={gift} />
                 </div>
 
                 {/*

@@ -226,6 +226,7 @@ export default function InvitationPage({ wedding }: { wedding: Wedding }) {
                         groom={wedding.groom}
                         dateDisplay={wedding.date_display}
                         ceremonyTime={wedding.ceremony_time_display}
+                        gift={wedding.gift}
                         onNavigate={navigateToPage}
                     />
                 </div>
@@ -254,7 +255,11 @@ export default function InvitationPage({ wedding }: { wedding: Wedding }) {
 
             {screen === 'faq' && (
                 <div ref={pageRef}>
-                    <FaqPage items={wedding.faq} onBack={navigateBack} />
+                    <FaqPage
+                        items={wedding.faq}
+                        gift={wedding.gift}
+                        onBack={navigateBack}
+                    />
                 </div>
             )}
 

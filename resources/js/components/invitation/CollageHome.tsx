@@ -1,10 +1,13 @@
 import type { ReactNode } from 'react';
+import type { WeddingGift } from '@/types';
+import GiftCard from './GiftCard';
 
 interface CollageHomeProps {
     bride: string;
     groom: string;
     dateDisplay: string;
     ceremonyTime: string;
+    gift: WeddingGift;
     onNavigate: (page: 'venue' | 'timeline' | 'faq' | 'rsvp' | 'gallery') => void;
 }
 
@@ -208,6 +211,7 @@ export default function CollageHome({
     groom,
     dateDisplay,
     ceremonyTime,
+    gift,
     onNavigate,
 }: CollageHomeProps) {
     return (
@@ -292,6 +296,10 @@ export default function CollageHome({
                             fullWidth
                             onClick={() => onNavigate('faq')}
                         />
+                    </div>
+
+                    <div className="col-span-2" data-collage-card>
+                        <GiftCard gift={gift} variant="compact" />
                     </div>
                 </div>
             </div>
