@@ -17,7 +17,7 @@ it('renders the invitation page with wedding data', function () {
         ->has('wedding.dress_code')
         ->has('wedding.rsvp')
         ->has('wedding.messages')
-        ->has('wedding.timeline', 3)
+        ->has('wedding.timeline', count(config('wedding.timeline')))
         ->has('wedding.faq', 3)
     );
 });
