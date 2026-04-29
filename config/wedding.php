@@ -98,9 +98,7 @@ return [
         'deadline' => '2026-05-25',
         'deadline_display' => 'Παρακαλούμε επιβεβαιώστε την παρουσία σας έως την 25 Μαΐου',
         'email' => 'info@wedding.gr',
-        // TEMP: αρχικό testing → talaridis@gmail.com.
-        // Όταν τελειώσουμε με τα tests, άλλαξε το default σε 'foteinipsaria@gmail.com'.
-        'notification_email' => env('WEDDING_RSVP_NOTIFICATION_EMAIL', 'talaridis@gmail.com'),
+        'notification_email' => env('WEDDING_RSVP_NOTIFICATION_EMAIL', 'foteinipsaria@gmail.com'),
         'special_needs_note' => 'Εάν έχετε ειδικές διατροφικές ανάγκες ή άλλες απαιτήσεις, παρακαλούμε ενημερώστε μας όσο το δυνατόν νωρίτερα',
     ],
 
